@@ -15,13 +15,14 @@
     </welcome-file-list>
     
     <servlet>
-        <servlet-name>Controller</servlet-name>
-        <servlet-class>myapp.Controller</servlet-class>
+        <display-name>SimpleController</display-name>
+        <servlet-name>SimpleController</servlet-name>
+        <servlet-class>myapp.SimpleController</servlet-class>
     </servlet>
     
     <servlet-mapping>
-        <servlet-name>Controller</servlet-name>
-        <url-pattern>/Controller</url-pattern>
+        <servlet-name>SimpleController</servlet-name>
+        <url-pattern>/SimpleController</url-pattern>
     </servlet-mapping>
     
     <servlet>
