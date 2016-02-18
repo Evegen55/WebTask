@@ -149,10 +149,33 @@ input[type="submit"]:hover {
 </style>
     </head>
     <body>
-        <div>
-            <h2 >
-                <a href="jsp/login.jsp">Log in</a>
-            </h2>
+        
+        <%--
+        <h1>
+            go to
+            <a href="jsp/main.jsp"> 
+                main.jsp
+            </a>
+        </h1>
+        
+        <form action="Controller" method="post">
+            <input type="submit" name="Form Button">
+        </form>
+        --%>
+        
+        <div class='login'>
+            <h2>Log in</h2>
+            <form action="SimpleController" method="post">
+                <input name='username' placeholder='Username/Email' type='text'/>
+                <input name='password' placeholder='Password' type='password'/>
+                <div class='remember'>
+                    <input checked='' id='remember' name='remember' type='checkbox'/>
+                    <label for='remember'></label>Remember me
+                </div>
+                <input type='submit' value='Log in'/>
+                <a class='forgot' href='#'>Forgot your password??</a>
+                <a class='createAcc' href='regisrationForm.jsp'>Create a new user account</a>
+            </form>
         </div>
     </body>
 </html>

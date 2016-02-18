@@ -14,6 +14,14 @@
         <welcome-file>start.htm</welcome-file>
     </welcome-file-list>
     
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <form-login-config> 
+            <form-login-page>/jsp/login.jsp</form-login-page>
+            <form-error-page>/jsp/error.jsp</form-error-page>
+        </form-login-config>
+    </login-config>
+    
     <servlet>
         <display-name>SimpleController</display-name>
         <servlet-name>SimpleController</servlet-name>
