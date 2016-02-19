@@ -33,27 +33,6 @@
     <security-role>
       <role-name>TutorialUser</role-name>
     </security-role>
-    
-    
-    
-    
-    <servlet>
-        <display-name>GetLogPage</display-name>
-        <servlet-name>GetLogPage</servlet-name>
-        <servlet-class>get_pages.GetLogPage</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GetLogPage</servlet-name>
-        <url-pattern>/GetLogPage</url-pattern>
-    </servlet-mapping>
-    <servlet>
-        <display-name>GetRegPage</display-name>
-        <servlet-name>GetRegPage</servlet-name>
-        <servlet-class>get_pages.GetRegPage</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GetRegPage</servlet-name>
-        <url-pattern>/GetRegPage</url-pattern>
-    </servlet-mapping>
+   
     
 </web-app>
