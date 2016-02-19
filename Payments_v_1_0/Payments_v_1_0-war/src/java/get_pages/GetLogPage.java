@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 /**
  *
  * @author Lartsev
+ * servlet allows us to log out from server
  */
 @WebServlet(name = "GetLogPage", urlPatterns =  {
     "/GetLogPage"}
