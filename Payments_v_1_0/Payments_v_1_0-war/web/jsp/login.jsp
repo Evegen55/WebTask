@@ -164,7 +164,6 @@ input[type="submit"]:hover {
         --%>
         
         <div class='login'>
-            <h2>Log in</h2>
             <form action="SimpleController" method="post">
                 <input name='username' placeholder='Username/Email' type='text'/>
                 <input name='password' placeholder='Password' type='password'/>
@@ -174,7 +173,6 @@ input[type="submit"]:hover {
                 </div>
                 <input type='submit' value='Log in'/>
                 <a class='forgot' href='#'>Forgot your password??</a>
-                <a class='createAcc' href='regisrationForm.jsp'>Create a new user account</a>
             </form>
         </div>
     </body>

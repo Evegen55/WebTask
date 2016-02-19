@@ -53,7 +53,7 @@ background:url(http://hdwallpapersfit.com/wp-content/uploads/2015/05/fall-leaves
 
 #des {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   margin: -175px 0 0 -150px;
   background: rgba(0,0,0,0.13);
@@ -189,26 +189,26 @@ background:url(http://hdwallpapersfit.com/wp-content/uploads/2015/05/fall-leaves
             
             <form action="SimpleControllerReg" method="post">
                 <div class="field-container">
-                    <label>Name</label>
-                    <input type="text" placeholder="Enter Full Name" pattern=".{4,}" required />
+                    <label>First Name</label>
+                    <input type="text" placeholder="First Name" pattern=".{4,}" required />
                     <i class="icon-user"></i>
                 </div>
                 
                 <div class="field-container">
-                    <label>Username</label>
-                    <input type="text" placeholder="Enter Username" pattern=".{4,}" required />
+                    <label>Last Name</label>
+                    <input type="text" placeholder="Last Name" pattern=".{4,}" required />
                     <i class="icon-user"></i>
                 </div>
                 
                 <div class="field-container">
                     <label>Email:</label>
-                    <input type="email" placeholder="Enter Email" required />
+                    <input type="email" placeholder="Email" required />
                     <i class="icon-envelope-alt"></i>
                 </div>
                 
                 <div class="field-container">
                     <label>Password:</label>
-                    <input type="text" placeholder="Enter Password" pattern=".{4,}" required />
+                    <input type="text" placeholder="Password" pattern=".{4,}" required />
                     <i class="icon-user"></i>
                 </div>
                 
