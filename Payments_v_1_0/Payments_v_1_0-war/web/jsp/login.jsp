@@ -164,7 +164,7 @@ input[type="submit"]:hover {
         --%>
         
         <div class='login'>
-            <form action="SimpleController" method="post">
+            <form action="Acc" method="post">
                 <input name='username' placeholder='Username/Email' type='text'/>
                 <input name='password' placeholder='Password' type='password'/>
                 <div class='remember'>
