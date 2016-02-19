@@ -1,0 +1,21 @@
+﻿путь где лежат скомпилированные в java-классы страницы jsp:
+c:\Program Files\glassfish-4.1.1\glassfish\domains\domain1\generated\jsp\Payments_v_1_0-war\org\apache\jsp\
+
+rigth way to autontificate
+1) start administrator console glassfish
+    http://localhost:4848/common/index.jsf
+2) add an authorized user to the Enterprise Server
+
+example:
+
+1)
+User ID = wsitUser
+Group List = wsit
+New Password = changeit
+Confirm New Password = changeit
+
+2)
+User ID = John
+Group List = TutorialUser
+New Password = changeit
+Confirm New Password = changeit
