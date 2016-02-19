@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app id="WebApp_ID" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <display-name>Payments_system_v_1_0</display-name>
-    <welcome-file-list>
-        <welcome-file>start.jsp</welcome-file>
-        <welcome-file>start.html</welcome-file>
-        <welcome-file>start.htm</welcome-file>
-    </welcome-file-list>
-    
     <security-constraint>
              <display-name>SecurityConstraint</display-name>
              <web-resource-collection>
@@ -20,8 +14,6 @@
                 <transport-guarantee>CONFIDENTIAL</transport-guarantee>
              </user-data-constraint>
     </security-constraint>
-    
-    
     <login-config>
         <auth-method>FORM</auth-method>
         <form-login-config>
@@ -33,6 +25,10 @@
     <security-role>
       <role-name>TutorialUser</role-name>
     </security-role>
-   
+    <welcome-file-list>
+        <welcome-file>start.jsp</welcome-file>
+        <welcome-file>start.html</welcome-file>
+        <welcome-file>start.htm</welcome-file>
+    </welcome-file-list>
     
 </web-app>
