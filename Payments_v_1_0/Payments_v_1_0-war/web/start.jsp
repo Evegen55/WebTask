@@ -83,8 +83,8 @@ label {color:white;
 
 
 input[type="submit"] {
-    background: #16aa56;
-  border: 0;
+  background: #16aa56;
+  border: 10;
   width: 250px;
   height: 40px;
   border-radius: 3px;
@@ -149,10 +149,18 @@ input[type="submit"]:hover {
 </style>
     </head>
     <body>
-        <div>
+        
             <h2 >
-                <a href="jsp/login.jsp">Log in</a>
+                <div class='login'>
+                <form action="GetLogPage" method="get">
+                    <input type='submit' value='Sign in'/>
+                </form>
+                
+                
+                <form action="GetRegPage" method="get">
+                    <input type='submit' value='Sign up'/>
+                </form>
+                </div>
             </h2>
-        </div>
     </body>
 </html>

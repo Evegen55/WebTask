@@ -1,47 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app 
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns="http://java.sun.com/xml/ns/javaee" 
-    xmlns:web="http://java.sun.com/xml/ns/javaee" 
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
-    id="WebApp_ID" 
-    version="3.0">
+<web-app id="WebApp_ID" version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <display-name>Payments_system_v_1_0</display-name>
-    
     <welcome-file-list>
         <welcome-file>start.jsp</welcome-file>
         <welcome-file>start.html</welcome-file>
         <welcome-file>start.htm</welcome-file>
     </welcome-file-list>
-    
     <login-config>
         <auth-method>FORM</auth-method>
-        <form-login-config> 
+        <form-login-config>
             <form-login-page>/jsp/login.jsp</form-login-page>
             <form-error-page>/jsp/error.jsp</form-error-page>
         </form-login-config>
     </login-config>
-    
     <servlet>
-        <display-name>SimpleController</display-name>
-        <servlet-name>SimpleController</servlet-name>
-        <servlet-class>myapp.SimpleController</servlet-class>
+        <display-name>GetLogPage</display-name>
+        <servlet-name>GetLogPage</servlet-name>
+        <servlet-class>get_pages.GetLogPage</servlet-class>
     </servlet>
-    
     <servlet-mapping>
-        <servlet-name>SimpleController</servlet-name>
-        <url-pattern>/SimpleController</url-pattern>
+        <servlet-name>GetLogPage</servlet-name>
+        <url-pattern>/GetLogPage</url-pattern>
     </servlet-mapping>
-    
     <servlet>
-        <servlet-name>ControllerReg</servlet-name>
-        <servlet-class>myapp.ControllerReg</servlet-class>
+        <display-name>GetRegPage</display-name>
+        <servlet-name>GetRegPage</servlet-name>
+        <servlet-class>get_pages.GetRegPage</servlet-class>
     </servlet>
-    
     <servlet-mapping>
-        <servlet-name>ControllerReg</servlet-name>
-        <url-pattern>/ControllerReg</url-pattern>
-    </servlet-mapping>   
-        
+        <servlet-name>GetRegPage</servlet-name>
+        <url-pattern>/GetRegPage</url-pattern>
+    </servlet-mapping>
     
 </web-app>
