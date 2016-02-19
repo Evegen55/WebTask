@@ -149,6 +149,6 @@ input[type="submit"]:hover {
 </style>
     </head>
     <body>
-        Hi
+        <a href="GetLogPage">Logout</a>
     </body>
 </html>
