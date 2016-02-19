@@ -149,18 +149,6 @@ input[type="submit"]:hover {
 </style>
     </head>
     <body>
-        
-            <h2 >
-                <div class='login'>
-                <form action="GetLogPage" method="get">
-                    <input type='submit' value='Sign in'/>
-                </form>
-                
-                
-                <form action="GetRegPage" method="get">
-                    <input type='submit' value='Sign up'/>
-                </form>
-                </div>
-            </h2>
+        Hi
     </body>
 </html>
