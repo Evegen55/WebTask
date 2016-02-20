@@ -43,10 +43,27 @@ public class DispatcherServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        //String operation = request.getParameter("operation");
+        String operation = request.getParameter("operation");
+        String destinationCards  ="./AllCards"; 
+        if(operation.equalsIgnoreCase("my_cards")) {
+            response.sendRedirect(response.encodeRedirectURL(destinationCards));
+        } else {
+            response.setContentType("text/html;charset=UTF-8");
+            try (PrintWriter out = response.getWriter()) {
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet TTTTServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet TTTServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+            }
+        }
             
-        String destination  ="./AllCards";        
-        response.sendRedirect(response.encodeRedirectURL(destination));
+               
+        
         
     }
 

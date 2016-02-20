@@ -175,10 +175,5 @@ input[type="green_button"] {
                 <input type="submit" name="operation" value='payments'/>
             </form>
         </div>
-        
-        
-            
-       
-        
     </body>
 </html>
