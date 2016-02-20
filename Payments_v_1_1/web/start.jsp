@@ -39,8 +39,8 @@ a {
 .login {
   width: 150px;
   position: absolute;
-  top: 30%;
-  left: 15%;
+  top: 40%;
+  left: 50%;
   margin: -184px 0px 0px -155px;
   background: rgba(0,0,0,0.2);
   padding: 30px 30px;
@@ -50,8 +50,8 @@ a {
 
 .logout {
   position: absolute;
-  top: 10%;
-  right: 10%;
+  top: 40%;
+  right: 50%;
 }
 
 input[type="text"], input[type="password"] {
