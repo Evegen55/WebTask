@@ -169,10 +169,10 @@ input[type="green_button"] {
         <a href="LogOut" class='remember'>Logout</a>
         
         <div class='login' >
-            <form action="./DispatcherServlet" method="post">
-                <input type="submit" name="cardRequest" value='my cards'/>
-                <input type="submit" name="accRequest"value='my bank account'/>
-                <input type="submit" name="payRequest"value='payments'/>
+            <form action="./DispatcherServlet" method="POST">
+                <input type="submit" name="operation" value="my_cards"/>
+                <input type="submit" name="operation" value='my bank account'/>
+                <input type="submit" name="operation" value='payments'/>
             </form>
         </div>
         
