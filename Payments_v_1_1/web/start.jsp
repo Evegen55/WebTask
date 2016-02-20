@@ -149,7 +149,7 @@ input[type="submit"]:hover {
 </style>
     </head>
     <body>
-        
+        <a href="LogOut">Logout</a>
         
     </body>
 </html>
