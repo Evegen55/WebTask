@@ -32,8 +32,10 @@ public class LogOut extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //Shud doun a session
         HttpSession session= request.getSession();
         session.invalidate();
+        
         RequestDispatcher requestDispather = request.getRequestDispatcher("/jsp/login.jsp");
         requestDispather.forward(request, response);
     }

@@ -33,18 +33,25 @@ h2 {
 a {
   color: #e7e7e7;
   text-decoration: none;
+  
 }
 
 .login {
-  width: 250px;
+  width: 150px;
   position: absolute;
-  top: 40%;
-  left: 50%;
+  top: 30%;
+  left: 15%;
   margin: -184px 0px 0px -155px;
   background: rgba(0,0,0,0.2);
-  padding: 20px 30px;
+  padding: 30px 30px;
   border-radius: 5px;
   box-shadow: 0px 1px 0px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07)
+}
+
+.logout {
+  position: absolute;
+  top: 10%;
+  right: 10%;
 }
 
 input[type="text"], input[type="password"] {
@@ -85,16 +92,22 @@ label {color:white;
 input[type="submit"] {
   background: #16aa56;
   border: 10;
-  width: 250px;
-  height: 40px;
+  width: 150px;
+  height: 30px;
   border-radius: 3px;
   color: white;
   cursor: pointer;
   transition: background 0.4s linear;
 }
-input[type="submit"]:hover {
-
-  background: #16bb59;
+input[type="green_button"] {
+  background: #16aa56;
+  border: 10;
+  width: 150px;
+  height: 30px;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.4s linear;
 }
 
 .forgot {
@@ -114,10 +127,11 @@ input[type="submit"]:hover {
 }
 
 .remember {
-  padding: 30px 0px;
+  padding-right: 30px;
   font-size: 12px;
   text-indent: 25px;
   line-height: 15px;
+  text-align: right
 }
 
 ::-webkit-input-placeholder {
@@ -146,10 +160,25 @@ input[type="submit"]:hover {
   color: #6d7781;
 }
 
+
 </style>
     </head>
     <body>
-        <a href="LogOut">Logout</a>
+        
+        <a href="start.jsp" class='remember'>Start page</a>
+        <a href="LogOut" class='remember'>Logout</a>
+        
+        <div class='login' >
+            <form action="./DispatcherServlet" method="post">
+                <input type="submit" name="cardRequest" value='my cards'/>
+                <input type="submit" name="accRequest"value='my bank account'/>
+                <input type="submit" name="payRequest"value='payments'/>
+            </form>
+        </div>
+        
+        
+            
+       
         
     </body>
 </html>
