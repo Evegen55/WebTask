@@ -19,3 +19,13 @@ User ID = John
 Group List = TutorialUser
 New Password = changeit
 Confirm New Password = changeit
+
+3)
+User ID = Eve
+Group List = TutorialUser
+New Password = changeit
+Confirm New Password = changeit
+
+
+пользователи 1 и 2 - на рабочем ПК развернуты
+пользователи 2 и 3 - на домашнем ПК
