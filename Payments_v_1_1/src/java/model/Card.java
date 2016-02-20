@@ -23,7 +23,6 @@ public class Card {
     private String pan;
     private String card_sec_code;
     private String valid_date;
-    //
     private String status;
     
     /**

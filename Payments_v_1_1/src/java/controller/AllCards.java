@@ -48,7 +48,7 @@ public class AllCards extends HttpServlet {
             throws ServletException, IOException {
         ArrayList<Card> list = cardDAO.getAllCards();
         request.setAttribute("list", list);
-        request.getRequestDispatcher("allcards.jsp").forward(request, response);
+        request.getRequestDispatcher("/jsp/allcards.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
