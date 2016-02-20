@@ -150,5 +150,39 @@ input[type="submit"]:hover {
     </head>
     <body>
         <a href="GetLogPage">Logout</a>
+        
+        <table border="1">
+            <td><a href="start.jsp">Client info</a></td>
+            <td><a href="./ALLCards">Client info</a></td>
+        </table>
+        <br />
+        
+        <form action="./ClientServlet" method="POST">
+            <table>
+                <tr>
+                    <td>Primary account number:</td>
+                    <td><input type="text" name="id" value="${creditCards.pan}"</td>
+                </tr>
+                <tr>
+                    <td>Card security code:</td>
+                    <td><input type="text" name="id" value="${creditCards.card_sec_code}"</td>
+                </tr>
+                <tr>
+                    <td>Valid thru:</td>
+                    <td><input type="text" name="id" value="${creditCards.valid_date}"</td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td><input type="text" name="id" value="${creditCards.status}"</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" name="operation" value="Add" />
+                        <input type="submit" name="operation" value="Edit" />
+                        <input type="submit" name="operation" value="Delete" />
+                        <input type="submit" name="operation" value="Search" />
+                </tr>
+            </table>
+        </form>
     </body>
 </html>
