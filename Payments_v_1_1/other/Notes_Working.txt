@@ -34,3 +34,33 @@ Confirm New Password = changeit
 4) create a model for bank account
 2) create DAO for for bank account
 3) create servlet for for bank account
+
+
+
+работа с MS SQL Server JDBC
+устанавливаем MS SQL Server Express 2014
+через инструмент Configuration Manager устанавливаем "SQL servers services" -> "SQL Server browser" -> running -> automatical
+распаковываем куда-нибудь qljdbc драйвер
+копируем файл sqljdbc_auth.dll из папки x86 в папку c:\Program Files (x86)\Microsoft SQL Server\120\SDK\Assemblies\
+копируем файл sqljdbc_auth.dll из папки x64 в папку c:\Program Files\Microsoft SQL Server\Client SDK\ODBC\x64\
+добавляем эти пути в системную переменную path
+
+копируем sqljdbc42.jar в папку веб сервера c:\Program Files\glassfish-XXX\glassfish\lib\
+
+
+
+
+работа с glassfish
+копируем путь c:\Program Files\glassfish-XXX\glassfish\bin\ в системную переменную path (где XXX - версия ПО)
+запускаем выполнить -> cmd -> asadmin start-domain domain1 (где domain1 - домен веб-приложения)
+стучимся через браузер на админскую страницу glassfish :     http://localhost:4848/common/index.jsf
+
+
+OOPS!
+we have two serious bugs:
+1) https://netbeans.org/bugzilla/show_bug.cgi?id=255795 - we cannot use 
+   other instance of glassfish server. Resolved: use the latest development version of NetBeans IDE
+   (in our case - http://bits.netbeans.org/dev/nightly/2016-02-20_00-02-15/)
+2) https://java.net/jira/browse/GLASSFISH-21314
+   we cannot create another connection pool
+   resolved - using a glassfish 5.0 http://download.oracle.com/glassfish/5.0/nightly/
