@@ -32,6 +32,17 @@ import model.Card;
 @Stateless
 @LocalBean
 public class CardDAO {
+    /*
+    To create a JDBC resource, specify a unique JNDI name that identifies the resource. 
+    (See the section JNDI Names and Resources.) Expect to find the JNDI name 
+    of a JDBC resource in java:comp/env/jdbc subcontext. 
+    For example, the JNDI name for the resource of a payroll database could be 
+    java:comp/env/jdbc/payrolldb. Because all resource JNDI names are in the 
+    java:comp/env subcontext, when specifying the JNDI name of a JDBC resource 
+    in the Admin Console, enter only jdbc/name. 
+    For example, for a payroll database specify jdbc/payrolldb.
+    @see more https://docs.oracle.com/cd/E19316-01/820-4335/ablih/index.html
+    */
 
     @Resource(name="jdbc/paymentDB")
     private DataSource ds;
