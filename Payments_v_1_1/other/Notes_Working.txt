@@ -64,3 +64,6 @@ we have two serious bugs:
 2) https://java.net/jira/browse/GLASSFISH-21314
    we cannot create another connection pool
    resolved - using a glassfish 5.0 http://download.oracle.com/glassfish/5.0/nightly/
+
+
+what it means - Transaction Isolation?? 
