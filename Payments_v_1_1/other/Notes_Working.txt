@@ -67,3 +67,19 @@ we have two serious bugs:
 
 
 what it means - Transaction Isolation?? 
+
+
+ok, we have created connection pool and resource and now we have to reset 
+users account and security settings on a web.xml
+
+1)
+User ID = John
+Group List = SimpleUser
+New Password = changeit
+Confirm New Password = changeit
+
+2)
+User ID = Eve
+Group List = SimpleUser
+New Password = change
+Confirm New Password = change

@@ -9,7 +9,7 @@
             30
         </session-timeout>
     </session-config>
-    <display-name>Payments_system_v_1_0</display-name>
+    <display-name>Payments_system_v_1_1</display-name>
     <security-constraint>
              <display-name>SecurityConstraint</display-name>
              <web-resource-collection>
@@ -17,7 +17,7 @@
                  <url-pattern>/*</url-pattern>
              </web-resource-collection>
              <auth-constraint>
-                  <role-name>TutorialUser</role-name>
+                  <role-name>SimpleUser</role-name>
              </auth-constraint>
              <user-data-constraint>
                 <transport-guarantee>CONFIDENTIAL</transport-guarantee>
@@ -32,7 +32,7 @@
     </login-config>
     <!-- Security roles referenced by this web application -->
     <security-role>
-      <role-name>TutorialUser</role-name>
+      <role-name>SimpleUser</role-name>
     </security-role>
     <welcome-file-list>
         <welcome-file>start.jsp</welcome-file>
