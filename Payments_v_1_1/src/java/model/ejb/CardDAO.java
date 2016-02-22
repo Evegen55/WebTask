@@ -19,6 +19,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import model.CreditCards;
 
 /**
  *
@@ -28,6 +29,10 @@ import javax.persistence.PersistenceContext;
 public class CardDAO implements CardDAOLocal {
     
     @PersistenceContext private EntityManager em;
+    
+    public CreditCards getCard(String pan){
+        return em.find(CreditCards.class, pan);
+    }
 
     public List getAllCards() {
         return em.createNamedQuery("CreditCards.findAll").getResultList();

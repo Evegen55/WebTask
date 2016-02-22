@@ -22,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.CreditCards;
 import model.ejb.CardDAO;
 
 /**
@@ -55,8 +56,8 @@ public class GetCard extends HttpServlet {
         out.println("</html>");
         }*/
         String pan = request.getParameter("pan");
-        //Card card = cardDAO.getCard("pan");
-        //request.setAttribute("card", card);
+        CreditCards card = cardDAO.getCard(pan);
+        request.setAttribute("card", card);
         //TODO: create a single page about single card???
         //request.getRequestDispatcher("cardinfo.jsp").forward(request, response);
         
