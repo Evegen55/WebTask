@@ -46,6 +46,12 @@ public class AllCards extends HttpServlet {
             throws ServletException, IOException {
         //System.out.println("//-------------------------------------------------------------------STOPPED HERE");
         List list = cardDAO.getAllCards();
+        
+        
+        System.out.println("in the List we have:" + "\t" + list.get(0));
+        System.out.println("in the List we have2:" + "\t" + list.get(0).getClass());
+        
+        
         request.setAttribute("list", list);
         request.getRequestDispatcher("/jsp/allcards.jsp").forward(request, response);
         
