@@ -26,7 +26,7 @@
             <th>Status</th>
             <c:forEach items="${requestScope.list}" var="card">
             <tr>
-                <td><a href="./GetCard?pan=${creditCards.pan}">${creditCards.pan}</a></td>
+                <td>${creditCards.pan}</a></td>
                 <td>${creditCards.card_sec_code}</td>
                 <td>${creditCards.valid_date}</td>
                 <td>${creditCards.status}</td>

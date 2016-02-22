@@ -85,4 +85,10 @@ public class CardDAO {
         }
         return list;
     }
+    
+    //TODO!!!
+
+    public Card getCard(String pan) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

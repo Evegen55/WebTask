@@ -83,3 +83,9 @@ User ID = Eve
 Group List = SimpleUser
 New Password = change
 Confirm New Password = change
+
+
+убираем ссылку <a href="${pageContext.request.contextPath}/GetCard?pan=${creditCards.pan}"> 
+из строки <td>${creditCards.pan}</a></td> файла allcards.jsp - 
+в данном контексте, когда вся информация по карте уже доступна в списке,
+выводить её отдельно не имеет смысла.
