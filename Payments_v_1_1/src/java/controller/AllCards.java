@@ -16,15 +16,13 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Card;
 import model.ejb.CardDAO;
 
 /**
@@ -46,11 +44,11 @@ public class AllCards extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        ArrayList<Card> list = cardDAO.getAllCards();
-        if(list.size()>0) {
-            request.setAttribute("list", list);
-            request.getRequestDispatcher("/jsp/allcards.jsp").forward(request, response);
-        }
+        System.out.println("//-------------------------------------------------------------------STOPPED HERE");
+        List list = cardDAO.getAllCards();
+        request.setAttribute("list", list);
+        request.getRequestDispatcher("/jsp/allcards.jsp").forward(request, response);
+        
         
     }
 

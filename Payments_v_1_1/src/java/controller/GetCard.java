@@ -16,14 +16,12 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Card;
 import model.ejb.CardDAO;
 
 /**
@@ -57,10 +55,10 @@ public class GetCard extends HttpServlet {
         out.println("</html>");
         }*/
         String pan = request.getParameter("pan");
-        Card card = cardDAO.getCard("pan");
-        request.setAttribute("card", card);
+        //Card card = cardDAO.getCard("pan");
+        //request.setAttribute("card", card);
         //TODO: create a single page about single card???
-        request.getRequestDispatcher("cardinfo.jsp").forward(request, response);
+        //request.getRequestDispatcher("cardinfo.jsp").forward(request, response);
         
     }
 

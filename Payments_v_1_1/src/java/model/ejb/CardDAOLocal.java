@@ -15,24 +15,13 @@
  */
 package model.ejb;
 
-import java.util.List;
-import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.ejb.Local;
 
 /**
  *
  * @author Evegen
  */
-@Stateless
-public class CardDAO implements CardDAOLocal {
+@Local
+public interface CardDAOLocal {
     
-    @PersistenceContext private EntityManager em;
-
-    public List getAllCards() {
-        return em.createNamedQuery("CreditCards.findAll").getResultList();
-    }
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 }
