@@ -16,16 +16,18 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -40,25 +42,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "CreditCards.findAll", query = "SELECT c FROM CreditCards c"),
     @NamedQuery(name = "CreditCards.findByCardID", query = "SELECT c FROM CreditCards c WHERE c.cardID = :cardID"),
-    @NamedQuery(name = "CreditCards.findByUserID", query = "SELECT c FROM CreditCards c WHERE c.userID = :userID"),
     @NamedQuery(name = "CreditCards.findByPan", query = "SELECT c FROM CreditCards c WHERE c.pan = :pan"),
-    @NamedQuery(name = "CreditCards.findByCardSecCode", query = "SELECT c FROM CreditCards c WHERE c.cardSecCode = :cardSecCode"),
-    @NamedQuery(name = "CreditCards.findByStatus", query = "SELECT c FROM CreditCards c WHERE c.status = :status"),
-    @NamedQuery(name = "CreditCards.findByValidDate", query = "SELECT c FROM CreditCards c WHERE c.validDate = :validDate")})
+    @NamedQuery(name = "CreditCards.findBySecureCode", query = "SELECT c FROM CreditCards c WHERE c.secureCode = :secureCode"),
+    @NamedQuery(name = "CreditCards.findByValidDate", query = "SELECT c FROM CreditCards c WHERE c.validDate = :validDate"),
+    @NamedQuery(name = "CreditCards.findByStatus", query = "SELECT c FROM CreditCards c WHERE c.status = :status")})
 public class CreditCards implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
     @Column(name = "cardID")
-    private String cardID;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "userID")
-    private String userID;
+    private Integer cardID;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 16)
@@ -66,55 +61,46 @@ public class CreditCards implements Serializable {
     private String pan;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "card_sec_code")
-    private String cardSecCode;
+    @Column(name = "secureCode")
+    private int secureCode;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "validDate")
+    @Temporal(TemporalType.DATE)
+    private Date validDate;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 10)
     @Column(name = "status")
     private String status;
-    @Basic(optional = false)
-    @NotNull
-    @Size(min = 1, max = 10)
-    @Column(name = "valid_date")
-    private String validDate;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "creditCards1")
-    private CreditCards creditCards;
-    @JoinColumn(name = "cardID", referencedColumnName = "cardID", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private CreditCards creditCards1;
+    @JoinColumn(name = "accountID", referencedColumnName = "accountID")
+    @ManyToOne(optional = false)
+    private BankAccount accountID;
+    @JoinColumn(name = "clientID", referencedColumnName = "clientID")
+    @ManyToOne(optional = false)
+    private Client clientID;
 
     public CreditCards() {
     }
 
-    public CreditCards(String cardID) {
+    public CreditCards(Integer cardID) {
         this.cardID = cardID;
     }
 
-    public CreditCards(String cardID, String userID, String pan, String cardSecCode, String status, String validDate) {
+    public CreditCards(Integer cardID, String pan, int secureCode, Date validDate, String status) {
         this.cardID = cardID;
-        this.userID = userID;
         this.pan = pan;
-        this.cardSecCode = cardSecCode;
-        this.status = status;
+        this.secureCode = secureCode;
         this.validDate = validDate;
+        this.status = status;
     }
 
-    public String getCardID() {
+    public Integer getCardID() {
         return cardID;
     }
 
-    public void setCardID(String cardID) {
+    public void setCardID(Integer cardID) {
         this.cardID = cardID;
-    }
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
     }
 
     public String getPan() {
@@ -125,12 +111,20 @@ public class CreditCards implements Serializable {
         this.pan = pan;
     }
 
-    public String getCardSecCode() {
-        return cardSecCode;
+    public int getSecureCode() {
+        return secureCode;
     }
 
-    public void setCardSecCode(String cardSecCode) {
-        this.cardSecCode = cardSecCode;
+    public void setSecureCode(int secureCode) {
+        this.secureCode = secureCode;
+    }
+
+    public Date getValidDate() {
+        return validDate;
+    }
+
+    public void setValidDate(Date validDate) {
+        this.validDate = validDate;
     }
 
     public String getStatus() {
@@ -141,28 +135,20 @@ public class CreditCards implements Serializable {
         this.status = status;
     }
 
-    public String getValidDate() {
-        return validDate;
+    public BankAccount getAccountID() {
+        return accountID;
     }
 
-    public void setValidDate(String validDate) {
-        this.validDate = validDate;
+    public void setAccountID(BankAccount accountID) {
+        this.accountID = accountID;
     }
 
-    public CreditCards getCreditCards() {
-        return creditCards;
+    public Client getClientID() {
+        return clientID;
     }
 
-    public void setCreditCards(CreditCards creditCards) {
-        this.creditCards = creditCards;
-    }
-
-    public CreditCards getCreditCards1() {
-        return creditCards1;
-    }
-
-    public void setCreditCards1(CreditCards creditCards1) {
-        this.creditCards1 = creditCards1;
+    public void setClientID(Client clientID) {
+        this.clientID = clientID;
     }
 
     @Override
