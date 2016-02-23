@@ -52,7 +52,7 @@ a {
             <c:forEach items="${requestScope.list}" var="card">
             <tr>
                 <td>${card.pan}</a></td>
-                <td>${card.cardSecCode}</td>
+                <td>${card.secureCode}</td>
                 <td>${card.validDate}</td>
                 <td>${card.status}</td>
             </tr>
