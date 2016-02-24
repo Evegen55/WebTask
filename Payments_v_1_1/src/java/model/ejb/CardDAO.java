@@ -36,8 +36,17 @@ public class CardDAO  {
      * @param id
      * @return
      */
-    public CreditCards getCardByID(int id){
-        return em.find(CreditCards.class, id);
+    public List getCardByID(int id){
+        return em.createNamedQuery("CreditCards.findByCardID").setParameter("cardID", id).getResultList();
+    }
+    
+    public CreditCards getCardByID_asSingleCard(int id){
+        List resultList = em.createNamedQuery("CreditCards.findByCardID").setParameter("cardID", id).getResultList();
+        CreditCards card = new CreditCards();
+        if (resultList.size()>0) {
+            card = (CreditCards) resultList.get(0);
+        }
+        return card;
     }
     
     /**

@@ -16,6 +16,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,6 +32,7 @@ import model.ejb.CardDAO;
  */
 @WebServlet(name = "GetCard", urlPatterns = {"/GetCard"})
 public class GetCard extends HttpServlet {
+    
     @EJB private CardDAO cardDAO;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,17 +46,16 @@ public class GetCard extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String ID_req = request.getParameter("cardID");
-        int ID_req_as_int = Integer.parseInt(ID_req);
-        //String pan = request.getParameter("pan");
-        CreditCards card = cardDAO.getCardByID(ID_req_as_int);
-        request.setAttribute("card", card);
-        //TODO: create a single page about single card with bank account number 
-        //with 1 button(?) 
-        //with hyperlink 
-        //to a jsp about single bank account number with 2 butons: 
-        //to make a payment
-        //add funds
-        request.getRequestDispatcher("cardinfo.jsp").forward(request, response);
+        int ID_req_int = Integer.parseInt(ID_req);
+        
+        /*List list = cardDAO.getCardByID(ID_req_int);
+        request.setAttribute("list", list);*/
+        
+        CreditCards creditCard = cardDAO.getCardByID_asSingleCard(ID_req_int);
+        request.setAttribute("creditCard", creditCard);
+        
+        
+        request.getRequestDispatcher("/jsp/cardinfo.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
