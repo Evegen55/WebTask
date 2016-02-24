@@ -30,6 +30,10 @@ public class AccountDAO {
     @PersistenceContext private EntityManager em;
 
     public List getAllAccounts() {
-        return em.createNamedQuery("BankAccount.findAll").getResultList();
+        //return em.createNamedQuery("BankAccount.findAll").getResultList();
+        //return em.createNamedQuery("BankAccount.findByAccountID").setParameter("accountID", 3).getResultList();
+        
+        //TODO: create right query!!!
+        return em.createNamedQuery("BankAccount.findByAccountID").setParameter("clientID", 3).getResultList();
     }
 }
