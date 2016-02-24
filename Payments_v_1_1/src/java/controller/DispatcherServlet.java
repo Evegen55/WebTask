@@ -44,16 +44,22 @@ public class DispatcherServlet extends HttpServlet {
             throws ServletException, IOException {
         
         String operation = request.getParameter("operation");
-        String destinationCards  ="./AllCards"; 
+        String destinationCards  ="./AllCards";
+        String destinationAccounts  ="./AllAccounts";
+        String destinationPaymentsHist  ="./PaymentsHist";
         if(operation.equalsIgnoreCase("my_cards")) {
             response.sendRedirect(response.encodeRedirectURL(destinationCards));
+        } else if (operation.equalsIgnoreCase("my bank account")) {
+            response.sendRedirect(response.encodeRedirectURL(destinationAccounts));
+        } else if (operation.equalsIgnoreCase("payments")){
+            response.sendRedirect(response.encodeRedirectURL(destinationPaymentsHist));
         } else {
             response.setContentType("text/html;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet TTTTServlet</title>");            
+            out.println("<title>Servlet TTTTServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet TTTServlet at " + request.getContextPath() + "</h1>");

@@ -16,22 +16,25 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.CreditCards;
-import model.ejb.CardDAO;
+import model.ejb.AccountDAO;
 
 /**
  *
  * @author Evegen
  */
-@WebServlet(name = "GetCard", urlPatterns = {"/GetCard"})
-public class GetCard extends HttpServlet {
-    @EJB private CardDAO cardDAO;
+@WebServlet(name = "AllAccounts", urlPatterns = {"/AllAccounts"})
+public class AllAccounts extends HttpServlet {
+    
+    @EJB private AccountDAO accountDAO;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,18 +46,9 @@ public class GetCard extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String ID_req = request.getParameter("cardID");
-        int ID_req_as_int = Integer.parseInt(ID_req);
-        //String pan = request.getParameter("pan");
-        CreditCards card = cardDAO.getCardByID(ID_req_as_int);
-        request.setAttribute("card", card);
-        //TODO: create a single page about single card with bank account number 
-        //with 1 button(?) 
-        //with hyperlink 
-        //to a jsp about single bank account number with 2 butons: 
-        //to make a payment
-        //add funds
-        request.getRequestDispatcher("cardinfo.jsp").forward(request, response);
+        List list = accountDAO.getAllAccounts();
+        request.setAttribute("list", list);
+        request.getRequestDispatcher("/jsp/allaccounts.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
