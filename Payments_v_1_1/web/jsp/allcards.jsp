@@ -51,7 +51,7 @@ a {
             <th>Status</th>
             <c:forEach items="${requestScope.list}" var="card">
             <tr>
-                <td>${card.pan}</a></td>
+                <td><a href="${pageContext.request.contextPath}/GetCard?cardID=${card.cardID}">${card.pan}</a></td>
                 <td>${card.secureCode}</td>
                 <td>${card.validDate}</td>
                 <td>${card.status}</td>

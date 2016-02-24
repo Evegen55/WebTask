@@ -31,9 +31,10 @@ public class CardDAO  {
     
     @PersistenceContext private EntityManager em;
     
-    public CreditCards getCard(String pan){
-        return em.find(CreditCards.class, pan);
+    public CreditCards getCardByID(int id){
+        return em.find(CreditCards.class, id);
     }
+    
 
     public List getAllCards() {
         return em.createNamedQuery("CreditCards.findAll").getResultList();

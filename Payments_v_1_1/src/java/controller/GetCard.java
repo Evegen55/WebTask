@@ -55,12 +55,18 @@ public class GetCard extends HttpServlet {
         out.println("</body>");
         out.println("</html>");
         }*/
-        String pan = request.getParameter("pan");
-        CreditCards card = cardDAO.getCard(pan);
+        String ID_req = request.getParameter("cardID");
+        int ID_req_as_int = Integer.parseInt(ID_req);
+        //String pan = request.getParameter("pan");
+        CreditCards card = cardDAO.getCardByID(ID_req_as_int);
         request.setAttribute("card", card);
-        //TODO: create a single page about single card???
-        //request.getRequestDispatcher("cardinfo.jsp").forward(request, response);
-        
+        //TODO: create a single page about single card with bank account number 
+        //with 1 button(?) 
+        //with hyperlink 
+        //to a jsp about single bank account number with 2 butons: 
+        //to make a payment
+        //add funds
+        request.getRequestDispatcher("cardinfo.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
