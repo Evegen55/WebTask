@@ -64,62 +64,122 @@ public class PaymentsHistory implements Serializable {
     @ManyToOne(optional = false)
     private Client beneficiarClienstID;
 
+    /**
+     *
+     */
     public PaymentsHistory() {
     }
 
+    /**
+     *
+     * @param paymentID
+     */
     public PaymentsHistory(Integer paymentID) {
         this.paymentID = paymentID;
     }
 
+    /**
+     *
+     * @param paymentID
+     * @param amount
+     */
     public PaymentsHistory(Integer paymentID, double amount) {
         this.paymentID = paymentID;
         this.amount = amount;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getPaymentID() {
         return paymentID;
     }
 
+    /**
+     *
+     * @param paymentID
+     */
     public void setPaymentID(Integer paymentID) {
         this.paymentID = paymentID;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getAmount() {
         return amount;
     }
 
+    /**
+     *
+     * @param amount
+     */
     public void setAmount(double amount) {
         this.amount = amount;
     }
 
+    /**
+     *
+     * @return
+     */
     public BankAccount getClientAccountID() {
         return clientAccountID;
     }
 
+    /**
+     *
+     * @param clientAccountID
+     */
     public void setClientAccountID(BankAccount clientAccountID) {
         this.clientAccountID = clientAccountID;
     }
 
+    /**
+     *
+     * @return
+     */
     public BankAccount getBeneficiarAccountID() {
         return beneficiarAccountID;
     }
 
+    /**
+     *
+     * @param beneficiarAccountID
+     */
     public void setBeneficiarAccountID(BankAccount beneficiarAccountID) {
         this.beneficiarAccountID = beneficiarAccountID;
     }
 
+    /**
+     *
+     * @return
+     */
     public Client getClientID() {
         return clientID;
     }
 
+    /**
+     *
+     * @param clientID
+     */
     public void setClientID(Client clientID) {
         this.clientID = clientID;
     }
 
+    /**
+     *
+     * @return
+     */
     public Client getBeneficiarClienstID() {
         return beneficiarClienstID;
     }
 
+    /**
+     *
+     * @param beneficiarClienstID
+     */
     public void setBeneficiarClienstID(Client beneficiarClienstID) {
         this.beneficiarClienstID = beneficiarClienstID;
     }

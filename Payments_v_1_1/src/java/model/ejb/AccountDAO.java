@@ -15,10 +15,13 @@
  */
 package model.ejb;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import model.Client;
 
 /**
  *
@@ -29,11 +32,31 @@ public class AccountDAO {
     
     @PersistenceContext private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     public List getAllAccounts() {
-        //return em.createNamedQuery("BankAccount.findAll").getResultList();
-        //return em.createNamedQuery("BankAccount.findByAccountID").setParameter("accountID", 3).getResultList();
-        
-        //TODO: create right query!!!
-        return em.createNamedQuery("BankAccount.findByAccountID").setParameter("clientID", 3).getResultList();
+        return em.createNamedQuery("BankAccount.findAll").getResultList();
     }
+    
+    /**
+     *
+     * @return
+     */
+    public List getAllAccountsByClientID() {
+        //OK. That is amazing. 
+        //Now we've got decide how we can get a link between user John and clientID
+        //in the next line clientID is just 1
+        Client client = em.find(Client.class, 1);
+        Collection col = client.getBankAccountCollection();
+        List list;
+        if(col instanceof List) {
+        list = (List)col;
+        } else {
+        list= new ArrayList(col);
+        }
+        return list;
+    }
+    
 }

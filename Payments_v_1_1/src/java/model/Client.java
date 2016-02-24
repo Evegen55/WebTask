@@ -86,13 +86,27 @@ public class Client implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "beneficiarClienstID")
     private Collection<PaymentsHistory> paymentsHistoryCollection1;
 
+    /**
+     *
+     */
     public Client() {
     }
 
+    /**
+     *
+     * @param clientID
+     */
     public Client(Integer clientID) {
         this.clientID = clientID;
     }
 
+    /**
+     *
+     * @param clientID
+     * @param nickName
+     * @param firstName
+     * @param lastName
+     */
     public Client(Integer clientID, String nickName, String firstName, String lastName) {
         this.clientID = clientID;
         this.nickName = nickName;
@@ -100,86 +114,166 @@ public class Client implements Serializable {
         this.lastName = lastName;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getClientID() {
         return clientID;
     }
 
+    /**
+     *
+     * @param clientID
+     */
     public void setClientID(Integer clientID) {
         this.clientID = clientID;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNickName() {
         return nickName;
     }
 
+    /**
+     *
+     * @param nickName
+     */
     public void setNickName(String nickName) {
         this.nickName = nickName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     *
+     * @param firstName
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getLastName() {
         return lastName;
     }
 
+    /**
+     *
+     * @param lastName
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPhone() {
         return phone;
     }
 
+    /**
+     *
+     * @param phone
+     */
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     *
+     * @param email
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<BankAccount> getBankAccountCollection() {
         return bankAccountCollection;
     }
 
+    /**
+     *
+     * @param bankAccountCollection
+     */
     public void setBankAccountCollection(Collection<BankAccount> bankAccountCollection) {
         this.bankAccountCollection = bankAccountCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<CreditCards> getCreditCardsCollection() {
         return creditCardsCollection;
     }
 
+    /**
+     *
+     * @param creditCardsCollection
+     */
     public void setCreditCardsCollection(Collection<CreditCards> creditCardsCollection) {
         this.creditCardsCollection = creditCardsCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<PaymentsHistory> getPaymentsHistoryCollection() {
         return paymentsHistoryCollection;
     }
 
+    /**
+     *
+     * @param paymentsHistoryCollection
+     */
     public void setPaymentsHistoryCollection(Collection<PaymentsHistory> paymentsHistoryCollection) {
         this.paymentsHistoryCollection = paymentsHistoryCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<PaymentsHistory> getPaymentsHistoryCollection1() {
         return paymentsHistoryCollection1;
     }
 
+    /**
+     *
+     * @param paymentsHistoryCollection1
+     */
     public void setPaymentsHistoryCollection1(Collection<PaymentsHistory> paymentsHistoryCollection1) {
         this.paymentsHistoryCollection1 = paymentsHistoryCollection1;
     }

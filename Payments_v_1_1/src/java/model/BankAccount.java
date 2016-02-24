@@ -65,65 +65,125 @@ public class BankAccount implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "beneficiarAccountID")
     private Collection<PaymentsHistory> paymentsHistoryCollection1;
 
+    /**
+     *
+     */
     public BankAccount() {
     }
 
+    /**
+     *
+     * @param accountID
+     */
     public BankAccount(Integer accountID) {
         this.accountID = accountID;
     }
 
+    /**
+     *
+     * @param accountID
+     * @param currentBalance
+     */
     public BankAccount(Integer accountID, double currentBalance) {
         this.accountID = accountID;
         this.currentBalance = currentBalance;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getAccountID() {
         return accountID;
     }
 
+    /**
+     *
+     * @param accountID
+     */
     public void setAccountID(Integer accountID) {
         this.accountID = accountID;
     }
 
+    /**
+     *
+     * @return
+     */
     public double getCurrentBalance() {
         return currentBalance;
     }
 
+    /**
+     *
+     * @param currentBalance
+     */
     public void setCurrentBalance(double currentBalance) {
         this.currentBalance = currentBalance;
     }
 
+    /**
+     *
+     * @return
+     */
     public Client getClientID() {
         return clientID;
     }
 
+    /**
+     *
+     * @param clientID
+     */
     public void setClientID(Client clientID) {
         this.clientID = clientID;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<CreditCards> getCreditCardsCollection() {
         return creditCardsCollection;
     }
 
+    /**
+     *
+     * @param creditCardsCollection
+     */
     public void setCreditCardsCollection(Collection<CreditCards> creditCardsCollection) {
         this.creditCardsCollection = creditCardsCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<PaymentsHistory> getPaymentsHistoryCollection() {
         return paymentsHistoryCollection;
     }
 
+    /**
+     *
+     * @param paymentsHistoryCollection
+     */
     public void setPaymentsHistoryCollection(Collection<PaymentsHistory> paymentsHistoryCollection) {
         this.paymentsHistoryCollection = paymentsHistoryCollection;
     }
 
+    /**
+     *
+     * @return
+     */
     @XmlTransient
     public Collection<PaymentsHistory> getPaymentsHistoryCollection1() {
         return paymentsHistoryCollection1;
     }
 
+    /**
+     *
+     * @param paymentsHistoryCollection1
+     */
     public void setPaymentsHistoryCollection1(Collection<PaymentsHistory> paymentsHistoryCollection1) {
         this.paymentsHistoryCollection1 = paymentsHistoryCollection1;
     }

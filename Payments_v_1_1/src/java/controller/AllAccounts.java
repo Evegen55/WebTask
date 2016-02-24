@@ -46,7 +46,8 @@ public class AllAccounts extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List list = accountDAO.getAllAccounts();
+        //List list = accountDAO.getAllAccounts();
+        List list = accountDAO.getAllAccountsByClientID();
         request.setAttribute("list", list);
         request.getRequestDispatcher("/jsp/allaccounts.jsp").forward(request, response);
     }

@@ -80,13 +80,28 @@ public class CreditCards implements Serializable {
     @ManyToOne(optional = false)
     private Client clientID;
 
+    /**
+     *
+     */
     public CreditCards() {
     }
 
+    /**
+     *
+     * @param cardID
+     */
     public CreditCards(Integer cardID) {
         this.cardID = cardID;
     }
 
+    /**
+     *
+     * @param cardID
+     * @param pan
+     * @param secureCode
+     * @param validDate
+     * @param status
+     */
     public CreditCards(Integer cardID, String pan, int secureCode, Date validDate, String status) {
         this.cardID = cardID;
         this.pan = pan;
@@ -95,58 +110,114 @@ public class CreditCards implements Serializable {
         this.status = status;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getCardID() {
         return cardID;
     }
 
+    /**
+     *
+     * @param cardID
+     */
     public void setCardID(Integer cardID) {
         this.cardID = cardID;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getPan() {
         return pan;
     }
 
+    /**
+     *
+     * @param pan
+     */
     public void setPan(String pan) {
         this.pan = pan;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSecureCode() {
         return secureCode;
     }
 
+    /**
+     *
+     * @param secureCode
+     */
     public void setSecureCode(int secureCode) {
         this.secureCode = secureCode;
     }
 
+    /**
+     *
+     * @return
+     */
     public Date getValidDate() {
         return validDate;
     }
 
+    /**
+     *
+     * @param validDate
+     */
     public void setValidDate(Date validDate) {
         this.validDate = validDate;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getStatus() {
         return status;
     }
 
+    /**
+     *
+     * @param status
+     */
     public void setStatus(String status) {
         this.status = status;
     }
 
+    /**
+     *
+     * @return
+     */
     public BankAccount getAccountID() {
         return accountID;
     }
 
+    /**
+     *
+     * @param accountID
+     */
     public void setAccountID(BankAccount accountID) {
         this.accountID = accountID;
     }
 
+    /**
+     *
+     * @return
+     */
     public Client getClientID() {
         return clientID;
     }
 
+    /**
+     *
+     * @param clientID
+     */
     public void setClientID(Client clientID) {
         this.clientID = clientID;
     }
