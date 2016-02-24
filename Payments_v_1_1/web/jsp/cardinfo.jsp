@@ -61,7 +61,6 @@ a {
                 <td>${card.validDate}</td>
                 <td>${card.status}</td>
                 <td>${card.accountID}</td>
-                
             </tr>
             </c:forEach>
                 Author     : Evegen
@@ -71,7 +70,17 @@ a {
                 <td>${requestScope.creditCard.secureCode}</td>
                 <td>${requestScope.creditCard.validDate}</td>
                 <td>${requestScope.creditCard.status}</td>
-                <td>${requestScope.creditCard.accountID}</td>
+                <td><a href="${pageContext.request.contextPath}/GetAccount?accountID=${creditCard.accountID.accountID}">
+                    ${requestScope.creditCard.accountID.accountID}
+                </td> 
+                <%--
+                It seems like ${requestScope.creditCard.accountID.accountID} NOT 
+                              ${requestScope.creditCard.accountID}
+                because we've got a 
+                                   @JoinColumn(name = "accountID", referencedColumnName = "accountID")
+                                   @ManyToOne(optional = false)
+                annotations in CreditCards class.
+                --%>
             </tr>
         </table>
     </body>

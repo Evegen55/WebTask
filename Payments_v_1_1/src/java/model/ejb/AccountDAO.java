@@ -21,6 +21,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import model.BankAccount;
 import model.Client;
 
 /**
@@ -57,6 +58,22 @@ public class AccountDAO {
         list= new ArrayList(col);
         }
         return list;
+    }
+    
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    public BankAccount getAccountByID_asSingleAccount(int id){
+        List resultList = em.createNamedQuery("BankAccount.findByAccountID")
+                .setParameter("accountID", id)
+                .getResultList();
+        BankAccount account = new BankAccount();
+        if (resultList.size()>0) {
+            account = (BankAccount) resultList.get(0);
+        }
+        return account;
     }
     
 }

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : allaccounts
-    Created on : 24.02.2016, 3:31:07
+    Document   : account_info
+    Created on : 24.02.2016, 17:34:40
     Author     : Evegen
 --%>
 
@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-            <style rel="stylesheet" type="text/css">
+        <style rel="stylesheet" type="text/css">
             
 body {
  background:url(http://hdwallpapersfit.com/wp-content/uploads/2015/05/fall-leaves-hd-wallpaper.jpg) no-repeat center center fixed;
@@ -36,25 +36,21 @@ a {
 }
 </style>
     </head>
-    <body>
+        <body>
         
         <a href="start.jsp" class='remember'>Start page</a>
         <a href="LogOut" class='remember'>Logout</a>
         
         <br />
-        <h3>My bank accounts</h3>
+        <h3>Info about bank account</h3>
         <br />
         <table border="1">
-            <th>Account number (id)</th>
-            <th>Balance</th>
-            <c:forEach items="${requestScope.list}" var="account">
+            <th>accountID</th>
+            <th>currentBalance</th>
             <tr>
-                <td><a href="${pageContext.request.contextPath}/GetAccount?accountID=${account.accountID}">
-                    ${account.accountID}</a>
-                </td>
-                <td>${account.currentBalance}</td>
+                <td>${requestScope.bankAccount.accountID}</a></td>
+                <td>${requestScope.bankAccount.currentBalance}</td>
             </tr>
-            </c:forEach>
         </table>
     </body>
 </html>

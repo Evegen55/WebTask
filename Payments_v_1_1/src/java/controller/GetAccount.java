@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Lartsev.
+ * Copyright 2016 Evegen.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,22 +16,24 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.ejb.CardDAO;
+import model.BankAccount;
+import model.ejb.AccountDAO;
 
 /**
  *
- * @author Lartsev
+ * @author Evegen
  */
-@WebServlet(name = "AllCards", urlPatterns = {"/AllCards"})
-public class AllCards extends HttpServlet {
-    @EJB private CardDAO cardDAO;
+@WebServlet(name = "GetAccount", urlPatterns = {"/GetAccount"})
+public class GetAccount extends HttpServlet {
+    
+    @EJB private AccountDAO accountDAO;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,9 +46,11 @@ public class AllCards extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List list = cardDAO.getAllCards();
-        request.setAttribute("list", list);
-        request.getRequestDispatcher("/jsp/allcards.jsp").forward(request, response);
+        String ID_req = request.getParameter("accountID");
+        int ID_req_int = Integer.parseInt(ID_req);
+        BankAccount bankAccount = accountDAO.getAccountByID_asSingleAccount(ID_req_int);
+        request.setAttribute("bankAccount", bankAccount);
+        request.getRequestDispatcher("/jsp/account_info.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
