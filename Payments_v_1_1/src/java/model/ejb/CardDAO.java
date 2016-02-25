@@ -15,11 +15,14 @@
  */
 package model.ejb;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import model.Client;
 import model.CreditCards;
 
 /**
@@ -64,4 +67,16 @@ public class CardDAO  {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    public List getAllCardsByClientID(int client_id) {
+        Client find = em.find(Client.class, client_id);
+        Collection col = find.getCreditCardsCollection();
+        List list;
+        if(col instanceof List) {
+        list = (List)col;
+        } else {
+        list= new ArrayList(col);
+        }
+        return list;
+    }
 }

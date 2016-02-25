@@ -47,10 +47,9 @@ public class DispatcherServlet extends HttpServlet {
         String destinationCards  ="./AllCards";
         String destinationAccounts  ="./AllAccounts";
         String destinationPaymentsHist  ="./PaymentsHist";
-        String destinationMakePayment  ="./MakePayment";
         //Paths
         String destinationAddFunds_path  ="/jsp/addfunds.jsp";
-        
+        String destinationMakePayment_path  ="/jsp/makepayment.jsp";
         
         if(operation.equalsIgnoreCase("my_cards")) {
             response.sendRedirect(response.encodeRedirectURL(destinationCards));
@@ -63,7 +62,9 @@ public class DispatcherServlet extends HttpServlet {
             response.setContentType("text/html;charset=UTF-8");
             request.getRequestDispatcher(destinationAddFunds_path).forward(request, response);
         } else if (operation.equalsIgnoreCase("make payment")){
-            response.sendRedirect(response.encodeRedirectURL(destinationMakePayment));
+            //logic for redirect to addfunds.jsp 
+            response.setContentType("text/html;charset=UTF-8");
+            request.getRequestDispatcher(destinationMakePayment_path).forward(request, response);
         } else {
             response.setContentType("text/html;charset=UTF-8");
         }
