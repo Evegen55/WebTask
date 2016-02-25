@@ -171,7 +171,7 @@ input[type="green_button"] {
         <div class='login' >
             <form action="./DispatcherServlet" method="POST">
                 <input type="submit" name="operation" value="my_cards"/>
-                <input type="submit" name="operation" value='my bank account'/>
+                <input type="submit" name="operation" value='my bank accounts'/>
                 <input type="submit" name="operation" value='payments'/>
             </form>
         </div>

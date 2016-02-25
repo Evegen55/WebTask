@@ -32,6 +32,10 @@ public class PaymentsHistDAO {
     
     @PersistenceContext private EntityManager em;
 
+    /**
+     *
+     * @return
+     */
     public List getAllPaymetnsHistoryByClientID() {
         //OK. That is amazing. 
         //Now we've got decide how we can get a link between user John and clientID

@@ -42,25 +42,29 @@ public class DispatcherServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        //Servlets
         String operation = request.getParameter("operation");
         String destinationCards  ="./AllCards";
         String destinationAccounts  ="./AllAccounts";
         String destinationPaymentsHist  ="./PaymentsHist";
-        String destinationAddFunds  ="./AddFunds";
         String destinationMakePayment  ="./MakePayment";
+        //Paths
+        String destinationAddFunds_path  ="/jsp/addfunds.jsp";
+        
         
         if(operation.equalsIgnoreCase("my_cards")) {
             response.sendRedirect(response.encodeRedirectURL(destinationCards));
-        } else if (operation.equalsIgnoreCase("my bank account")) {
+        } else if (operation.equalsIgnoreCase("my bank accounts")) {
             response.sendRedirect(response.encodeRedirectURL(destinationAccounts));
         } else if (operation.equalsIgnoreCase("payments")){
             response.sendRedirect(response.encodeRedirectURL(destinationPaymentsHist));
         } else if (operation.equalsIgnoreCase("add funds")){
-            response.sendRedirect(response.encodeRedirectURL(destinationAddFunds));
+            //logic for redirect to addfunds.jsp 
+            response.setContentType("text/html;charset=UTF-8");
+            request.getRequestDispatcher(destinationAddFunds_path).forward(request, response);
         } else if (operation.equalsIgnoreCase("make payment")){
             response.sendRedirect(response.encodeRedirectURL(destinationMakePayment));
-        }else {
+        } else {
             response.setContentType("text/html;charset=UTF-8");
         }
             

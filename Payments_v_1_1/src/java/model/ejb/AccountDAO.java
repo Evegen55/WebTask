@@ -75,5 +75,17 @@ public class AccountDAO {
         }
         return account;
     }
+
+    /**
+     *
+     * @param bankAccount
+     */
+    public void addMoney(BankAccount bankAccount) {
+        BankAccount old_bankAccount = getAccountByID_asSingleAccount(bankAccount.getAccountID());
+        double old_amount = old_bankAccount.getCurrentBalance();
+        double new_amount = bankAccount.getCurrentBalance();
+        bankAccount.setCurrentBalance(new_amount+old_amount);
+        em.merge(bankAccount);
+    }
     
 }

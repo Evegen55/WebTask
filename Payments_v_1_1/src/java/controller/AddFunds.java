@@ -17,11 +17,16 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.BankAccount;
+import model.Client;
+import model.ejb.AccountDAO;
+import model.ejb.ClientDAO;
 
 /**
  *
@@ -29,6 +34,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "AddFunds", urlPatterns = {"/AddFunds"})
 public class AddFunds extends HttpServlet {
+    
+    @EJB private AccountDAO accountDAO;
+    @EJB private ClientDAO clientDAO;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,6 +49,23 @@ public class AddFunds extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        //logic for adding money
+        String operation = request.getParameter("operation");
+        String accountID = request.getParameter("accountID");
+        String newBalance = request.getParameter("newBalance");
+        //rewrite integer 1 for real clientID (as link of authorised user)
+        int client_id = 1;
+        int accountID_as_int = Integer.parseInt(accountID);
+        double currentBalance_as_double = Double.parseDouble(newBalance);
+        
+        Client clientID = clientDAO.getClientByID_asSingleClient(client_id);
+        BankAccount bankAccount = new BankAccount(accountID_as_int,currentBalance_as_double);
+        bankAccount.setClientID(clientID);
+        if (operation.equalsIgnoreCase("AddMoney")) {
+            accountDAO.addMoney(bankAccount);
+        }
+        //logic for redirect back to addfunds.jsp 
         response.setContentType("text/html;charset=UTF-8");
         request.getRequestDispatcher("/jsp/addfunds.jsp").forward(request, response);
     }
