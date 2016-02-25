@@ -34,6 +34,27 @@ a {
   line-height: 15px;
   text-align: right
 }
+input[type="submit"] {
+  background: #16aa56;
+  border: 10;
+  width: 150px;
+  height: 30px;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  transition: background 0.4s linear;
+}
+.login {
+  width: 150px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  margin: -184px 0px 0px -155px;
+  background: rgba(0,0,0,0.2);
+  padding: 30px 30px;
+  border-radius: 5px;
+  box-shadow: 0px 1px 0px rgba(0,0,0,0.3),inset 0px 1px 0px rgba(255,255,255,0.07)
+}
 </style>
     </head>
         <body>
@@ -52,5 +73,11 @@ a {
                 <td>${requestScope.bankAccount.currentBalance}</td>
             </tr>
         </table>
+        <div class='login' >
+            <form action="./DispatcherServlet" method="POST">
+                <input type="submit" name="operation" value="add funds"/>
+                <input type="submit" name="operation" value="make payment"/>
+            </form>
+        </div>
     </body>
 </html>

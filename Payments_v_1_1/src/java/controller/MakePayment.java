@@ -16,24 +16,20 @@
 package controller;
 
 import java.io.IOException;
-import java.util.List;
-import javax.ejb.EJB;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.CreditCards;
-import model.ejb.CardDAO;
 
 /**
  *
  * @author Evegen
  */
-@WebServlet(name = "GetCard", urlPatterns = {"/GetCard"})
-public class GetCard extends HttpServlet {
-    
-    @EJB private CardDAO cardDAO;
+@WebServlet(name = "MakePayment", urlPatterns = {"/MakePayment"})
+public class MakePayment extends HttpServlet {
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -45,15 +41,19 @@ public class GetCard extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String ID_req = request.getParameter("cardID");
-        int ID_req_int = Integer.parseInt(ID_req);
-        
-        /*List list = cardDAO.getCardByID(ID_req_int);
-        request.setAttribute("list", list);*/
-        
-        CreditCards creditCard = cardDAO.getCardByID_asSingleCard(ID_req_int);
-        request.setAttribute("creditCard", creditCard);
-        request.getRequestDispatcher("/jsp/cardinfo.jsp").forward(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet MakePayment</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet MakePayment at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

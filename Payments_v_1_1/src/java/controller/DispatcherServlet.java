@@ -47,25 +47,21 @@ public class DispatcherServlet extends HttpServlet {
         String destinationCards  ="./AllCards";
         String destinationAccounts  ="./AllAccounts";
         String destinationPaymentsHist  ="./PaymentsHist";
+        String destinationAddFunds  ="./AddFunds";
+        String destinationMakePayment  ="./MakePayment";
+        
         if(operation.equalsIgnoreCase("my_cards")) {
             response.sendRedirect(response.encodeRedirectURL(destinationCards));
         } else if (operation.equalsIgnoreCase("my bank account")) {
             response.sendRedirect(response.encodeRedirectURL(destinationAccounts));
         } else if (operation.equalsIgnoreCase("payments")){
             response.sendRedirect(response.encodeRedirectURL(destinationPaymentsHist));
-        } else {
+        } else if (operation.equalsIgnoreCase("add funds")){
+            response.sendRedirect(response.encodeRedirectURL(destinationAddFunds));
+        } else if (operation.equalsIgnoreCase("make payment")){
+            response.sendRedirect(response.encodeRedirectURL(destinationMakePayment));
+        }else {
             response.setContentType("text/html;charset=UTF-8");
-            try (PrintWriter out = response.getWriter()) {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet TTTTServlet</title>");
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet TTTServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-            }
         }
             
                
