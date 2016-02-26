@@ -48,14 +48,15 @@ public class AddFunds extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //logic for adding money
         String operation = request.getParameter("operation");
         String newBalance = request.getParameter("newBalance");
         String accountID = request.getParameter("accountID");
         //test code
         //System.out.println("accountID from request in the business logic" + "\t" + accountID);
-        //rewrite integer 1 for real clientID (as link of authorised user)
-        int client_id = 1;
+        
+        //REWRITE IT!!!
+        int client_id = 1;//IT'S NOT CORRECT!!!
+        
         int accountID_as_int = Integer.parseInt(accountID);
         double currentBalance_as_double = Double.parseDouble(newBalance);
         

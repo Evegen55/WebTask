@@ -47,7 +47,6 @@ public class AccountDAO {
      * @return
      */
     public List getAllAccountsByClientID() {
-        //OK. That is amazing. 
         //Now we've got decide how we can get a link between user John and clientID
         //in the next line clientID is just 1
         Client client = em.find(Client.class, 1);
@@ -143,9 +142,14 @@ public class AccountDAO {
         ph.setBeneficiarClienstID(clientTo);
         ph.setBeneficiarAccountID(bankAccountTo);
         em.persist(ph);
-        
     }
     
+    /**
+     * 
+     * @param bankAccount
+     * @param clientID
+     * @param amount 
+     */
     public void addMoneyWithHistory(BankAccount bankAccount, Client clientID, double amount) {
         addMoney(bankAccount);
         writeHistory(bankAccount, bankAccount, clientID, clientID, amount);

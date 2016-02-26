@@ -16,7 +16,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -62,8 +61,7 @@ public class MakePayment extends HttpServlet {
         + "beneficiarAccountID" + "\t" + beneficiarAccountID);*/
         
         //REWRITE IT!!!
-        int client_id = 1;
-        int beneficiar_client_id = 2;
+        int client_id = 1;//IT'S NOT CORRECT!!!
         
         int accountID_as_int = Integer.parseInt(accountID);
         int beneficiarAccountID_as_int = Integer.parseInt(beneficiarAccountID);
@@ -77,8 +75,7 @@ public class MakePayment extends HttpServlet {
         
         //second client and his bank account
         BankAccount bankAccountBeneficiar = new BankAccount(beneficiarAccountID_as_int,payment_as_double);
-        
-        //getting ID of beneficiar
+        //getting ID of beneficiar(second client)
         BankAccount accountByID_asSingleAccount = accountDAO.getAccountByID_asSingleAccount(beneficiarAccountID_as_int);
         Client beneficiar = accountByID_asSingleAccount.getClientID();
         bankAccountBeneficiar.setClientID(beneficiar);
