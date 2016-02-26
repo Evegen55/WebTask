@@ -16,8 +16,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,20 +56,18 @@ public class DispatcherServlet extends HttpServlet {
         } else if (operation.equalsIgnoreCase("payments")){
             response.sendRedirect(response.encodeRedirectURL(destinationPaymentsHist));
         } else if (operation.equalsIgnoreCase("add funds")){
-            //logic for redirect to addfunds.jsp 
+            //logic for redirect to addfunds.jsp with accountID attribute
             response.setContentType("text/html;charset=UTF-8");
+            String accountID = request.getParameter("accountID");
+            request.setAttribute("accountID", accountID);
             request.getRequestDispatcher(destinationAddFunds_path).forward(request, response);
         } else if (operation.equalsIgnoreCase("make payment")){
-            //logic for redirect to addfunds.jsp 
+            //logic for redirect to makepayment.jsp 
             response.setContentType("text/html;charset=UTF-8");
             request.getRequestDispatcher(destinationMakePayment_path).forward(request, response);
         } else {
             response.setContentType("text/html;charset=UTF-8");
         }
-            
-               
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

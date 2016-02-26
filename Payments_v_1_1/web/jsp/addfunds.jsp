@@ -64,12 +64,9 @@ input[type="text"] {
         <br />
         <h3>Add money only to your account</h3>
         <br />
-        <form action="${pageContext.request.contextPath}/AddFunds" method="POST">
+        <%-- getting ACCOUNT ID direct from account_info.jsp via DispatcherServlet --%>
+        <form action="${pageContext.request.contextPath}/AddFunds?accountID=${requestScope.accountID}" method="POST">
             <table>
-                <tr>
-                    <td>account ID:</td>
-                    <td><input type="text" name="accountID"/></td>
-                </tr>
                 <tr>
                     <td>Amount:</td>
                     <td><input type="text" name="newBalance"/></td>

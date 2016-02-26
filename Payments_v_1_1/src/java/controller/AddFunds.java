@@ -52,8 +52,9 @@ public class AddFunds extends HttpServlet {
         
         //logic for adding money
         String operation = request.getParameter("operation");
-        String accountID = request.getParameter("accountID");
         String newBalance = request.getParameter("newBalance");
+        String accountID = request.getParameter("accountID");
+        System.out.println("accountID from request in the business logic" + "\t" + accountID);
         //rewrite integer 1 for real clientID (as link of authorised user)
         int client_id = 1;
         int accountID_as_int = Integer.parseInt(accountID);

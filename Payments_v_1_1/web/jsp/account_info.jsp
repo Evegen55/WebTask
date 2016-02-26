@@ -65,19 +65,18 @@ input[type="submit"] {
         <br />
         <h3>Info about bank account</h3>
         <br />
+        
         <table border="1">
             <th>accountID</th>
             <th>currentBalance</th>
             <tr>
-                <td>${requestScope.bankAccount.accountID}</a></td>
+                <td>${requestScope.bankAccount.accountID}</a</td>
                 <td>${requestScope.bankAccount.currentBalance}</td>
             </tr>
         </table>
-        <div class='login' >
-            <form action="./DispatcherServlet" method="POST">
-                <input type="submit" name="operation" value="add funds"/>
+            <form action="./DispatcherServlet?accountID=${requestScope.bankAccount.accountID}" method="POST">
+                <input type="submit" name="operation" value="add funds" />
                 <input type="submit" name="operation" value="make payment"/>
             </form>
-        </div>
     </body>
 </html>
