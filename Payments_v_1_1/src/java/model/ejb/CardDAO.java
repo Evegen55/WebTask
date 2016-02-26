@@ -72,7 +72,6 @@ public class CardDAO  {
      * @param client_id
      * @return
      */
-
     public List getAllCardsByClientID(int client_id) {
         Client find = em.find(Client.class, client_id);
         Collection col = find.getCreditCardsCollection();

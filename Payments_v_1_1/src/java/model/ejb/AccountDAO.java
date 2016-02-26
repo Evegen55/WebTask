@@ -129,7 +129,6 @@ public class AccountDAO {
      * @param amount 
      */
     public void writeHistory(BankAccount bankAccountFrom, BankAccount bankAccountTo, Client clientFrom, Client clientTo, double amount) {
-        //write a payment history!!!!!
         PaymentsHistory ph = new PaymentsHistory();
         int paymentID = 0;
         List resultList = em.createNamedQuery("PaymentsHistory.findAll").getResultList();
@@ -144,6 +143,12 @@ public class AccountDAO {
         ph.setBeneficiarClienstID(clientTo);
         ph.setBeneficiarAccountID(bankAccountTo);
         em.persist(ph);
+        
     }
     
+    public void addMoneyWithHistory(BankAccount bankAccount, Client clientID, double amount) {
+        addMoney(bankAccount);
+        writeHistory(bankAccount, bankAccount, clientID, clientID, amount);
+    }
+  
 }

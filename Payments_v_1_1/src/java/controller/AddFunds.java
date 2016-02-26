@@ -48,11 +48,11 @@ public class AddFunds extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
         //logic for adding money
         String operation = request.getParameter("operation");
         String newBalance = request.getParameter("newBalance");
         String accountID = request.getParameter("accountID");
+        //test code
         //System.out.println("accountID from request in the business logic" + "\t" + accountID);
         //rewrite integer 1 for real clientID (as link of authorised user)
         int client_id = 1;
@@ -60,10 +60,11 @@ public class AddFunds extends HttpServlet {
         double currentBalance_as_double = Double.parseDouble(newBalance);
         
         Client clientID = clientDAO.getClientByID_asSingleClient(client_id);
+        //create a new instance of BankAccount for using with EntityManager
         BankAccount bankAccount = new BankAccount(accountID_as_int,currentBalance_as_double);
         bankAccount.setClientID(clientID);
         if (operation.equalsIgnoreCase("AddMoney")) {
-            accountDAO.addMoney(bankAccount);
+            accountDAO.addMoneyWithHistory(bankAccount, clientID, currentBalance_as_double);
         }
         //logic for redirect back to addfunds.jsp 
         response.setContentType("text/html;charset=UTF-8");
