@@ -64,12 +64,8 @@ input[type="text"] {
         <br />
         <h3>Make Payment</h3>
         <br />
-        <form action="${pageContext.request.contextPath}/MakePayment" method="POST">
+        <form action="${pageContext.request.contextPath}/MakePayment?accountID=${requestScope.accountID}" method="POST">
             <table>
-                <tr>
-                    <td>MyAccountID:</td>
-                    <td><input type="text" name="clientAccountID"/></td>
-                </tr>
                 <tr>
                     <td>Amount:</td>
                     <td><input type="text" name="payment"/></td>

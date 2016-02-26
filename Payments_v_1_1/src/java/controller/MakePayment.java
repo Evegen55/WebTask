@@ -17,11 +17,16 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.BankAccount;
+import model.Client;
+import model.ejb.AccountDAO;
+import model.ejb.ClientDAO;
 
 /**
  *
@@ -29,6 +34,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "MakePayment", urlPatterns = {"/MakePayment"})
 public class MakePayment extends HttpServlet {
+    
+    @EJB private AccountDAO accountDAO;
+    @EJB private ClientDAO clientDAO;
+    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -41,19 +50,45 @@ public class MakePayment extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MakePayment</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet MakePayment at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String operation = request.getParameter("operation");
+        String payment = request.getParameter("payment");
+        String accountID = request.getParameter("accountID");
+        String beneficiarAccountID = request.getParameter("beneficiarAccountID");
+        
+        //test code:
+        /*System.out.println("in the business logic: " + "operation" + operation + "\t"
+        + "payment" + "\t" + payment + "\t"
+        + "accountID" + "\t" + accountID + "\t"
+        + "beneficiarAccountID" + "\t" + beneficiarAccountID);*/
+        
+        //REWRITE IT!!!
+        int client_id = 1;
+        int beneficiar_client_id = 2;
+        
+        int accountID_as_int = Integer.parseInt(accountID);
+        int beneficiarAccountID_as_int = Integer.parseInt(beneficiarAccountID);
+        double payment_as_double = Double.parseDouble(payment);
+        
+        //find a clients and his bank accounts
+        //first client and his account
+        Client client = clientDAO.getClientByID_asSingleClient(client_id);
+        BankAccount bankAccount = new BankAccount(accountID_as_int,payment_as_double);
+        bankAccount.setClientID(client);
+        
+        //second client and his bank account
+        BankAccount bankAccountBeneficiar = new BankAccount(beneficiarAccountID_as_int,payment_as_double);
+        
+        //getting ID of beneficiar
+        BankAccount accountByID_asSingleAccount = accountDAO.getAccountByID_asSingleAccount(beneficiarAccountID_as_int);
+        Client beneficiar = accountByID_asSingleAccount.getClientID();
+        bankAccountBeneficiar.setClientID(beneficiar);
+        
+        if (operation.equalsIgnoreCase("Make a pay")) {
+            accountDAO.makePay(bankAccount, bankAccountBeneficiar, client, beneficiar, payment_as_double);
         }
+        //logic for redirect back to makepayment.jsp 
+        response.setContentType("text/html;charset=UTF-8");
+        request.getRequestDispatcher("/jsp/makepayment.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

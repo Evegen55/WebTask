@@ -16,7 +16,6 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -54,7 +53,7 @@ public class AddFunds extends HttpServlet {
         String operation = request.getParameter("operation");
         String newBalance = request.getParameter("newBalance");
         String accountID = request.getParameter("accountID");
-        System.out.println("accountID from request in the business logic" + "\t" + accountID);
+        //System.out.println("accountID from request in the business logic" + "\t" + accountID);
         //rewrite integer 1 for real clientID (as link of authorised user)
         int client_id = 1;
         int accountID_as_int = Integer.parseInt(accountID);

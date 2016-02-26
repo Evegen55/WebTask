@@ -23,6 +23,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import model.BankAccount;
 import model.Client;
+import model.PaymentsHistory;
 
 /**
  *
@@ -84,8 +85,65 @@ public class AccountDAO {
         BankAccount old_bankAccount = getAccountByID_asSingleAccount(bankAccount.getAccountID());
         double old_amount = old_bankAccount.getCurrentBalance();
         double new_amount = bankAccount.getCurrentBalance();
-        bankAccount.setCurrentBalance(new_amount+old_amount);
+        bankAccount.setCurrentBalance(old_amount+new_amount);
         em.merge(bankAccount);
+    }
+    
+    /**
+     * 
+     * @param bankAccount 
+     */
+    public void substractionMoney(BankAccount bankAccount) {
+        BankAccount old_bankAccount = getAccountByID_asSingleAccount(bankAccount.getAccountID());
+        double old_amount = old_bankAccount.getCurrentBalance();
+        double new_amount = bankAccount.getCurrentBalance();
+        bankAccount.setCurrentBalance(old_amount-new_amount);
+        em.merge(bankAccount);
+    }
+    
+    /**
+     * This set of operations will execute in one single transaction
+     * which working under Entity Manager
+     * 
+     * @param bankAccountFrom
+     * @param bankAccountTo
+     * @param clientFrom
+     * @param clientTo
+     * @param amount
+     */
+    public void makePay(BankAccount bankAccountFrom, BankAccount bankAccountTo,
+            Client clientFrom, Client clientTo, double amount) {
+        substractionMoney(bankAccountFrom);
+        addMoney(bankAccountTo);
+        writeHistory(bankAccountFrom, bankAccountTo, clientFrom, clientTo, amount);
+    }
+
+    /**
+     * This set of operations will execute in one single transaction
+     * which working under Entity Manager
+     * 
+     * @param bankAccountFrom
+     * @param bankAccountTo
+     * @param clientFrom
+     * @param clientTo
+     * @param amount 
+     */
+    public void writeHistory(BankAccount bankAccountFrom, BankAccount bankAccountTo, Client clientFrom, Client clientTo, double amount) {
+        //write a payment history!!!!!
+        PaymentsHistory ph = new PaymentsHistory();
+        int paymentID = 0;
+        List resultList = em.createNamedQuery("PaymentsHistory.findAll").getResultList();
+        if (resultList.size()>0) {
+            PaymentsHistory phOld = (PaymentsHistory) resultList.get(resultList.size()-1);
+            paymentID = phOld.getPaymentID();
+        }
+        ph.setPaymentID(paymentID+1);
+        ph.setClientID(clientFrom);
+        ph.setClientAccountID(bankAccountFrom);
+        ph.setAmount(amount);
+        ph.setBeneficiarClienstID(clientTo);
+        ph.setBeneficiarAccountID(bankAccountTo);
+        em.persist(ph);
     }
     
 }

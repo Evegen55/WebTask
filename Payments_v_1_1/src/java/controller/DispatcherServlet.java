@@ -64,6 +64,9 @@ public class DispatcherServlet extends HttpServlet {
         } else if (operation.equalsIgnoreCase("make payment")){
             //logic for redirect to makepayment.jsp 
             response.setContentType("text/html;charset=UTF-8");
+            String accountID = request.getParameter("accountID");
+            /*System.out.println("accountID" + "\t" + accountID );*/
+            request.setAttribute("accountID", accountID);
             request.getRequestDispatcher(destinationMakePayment_path).forward(request, response);
         } else {
             response.setContentType("text/html;charset=UTF-8");

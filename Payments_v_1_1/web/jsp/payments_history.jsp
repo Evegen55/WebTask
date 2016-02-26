@@ -54,9 +54,9 @@ a {
             <tr>
                 <td>${pay_hist.paymentID}</a></td>
                 <td>${pay_hist.amount}</td>
-                <td>${pay_hist.clientAccountID}</td>
-                <td>${pay_hist.beneficiarAccountID}</td>
-                <td>${pay_hist.beneficiarClienstID}</td>
+                <td>${pay_hist.clientAccountID.accountID}</td>
+                <td>${pay_hist.beneficiarAccountID.accountID}</td>
+                <td>${pay_hist.beneficiarClienstID.clientID}</td>
             </tr>
             </c:forEach>
         </table>
