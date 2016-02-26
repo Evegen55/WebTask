@@ -18,7 +18,6 @@ package model.ejb;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import javax.ejb.Local;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -67,6 +66,12 @@ public class CardDAO  {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    /**
+     *
+     * @param client_id
+     * @return
+     */
 
     public List getAllCardsByClientID(int client_id) {
         Client find = em.find(Client.class, client_id);
