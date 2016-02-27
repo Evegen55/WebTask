@@ -66,19 +66,30 @@ input[type="submit"] {
         <h3>Info about bank account</h3>
         <br />
         
-        
+        <%-- Just as example using JSTL--%>
+        <c:set var="accountID" value="${requestScope.bankAccount.accountID}" />
+        <c:set var="currentBalance" value="${requestScope.bankAccount.currentBalance}" />
+        <c:set var="status" value="${requestScope.bankAccount.status}" />
+        <c:if test="${status == '1'}">
+            <c:set var="statusBL" value="unblocked"></c:set>
+        </c:if>
+        <c:if test="${status == '2'}">
+            <c:set var="statusBL" value="blocked"></c:set>
+        </c:if>
+                   
+        <%--  --%>
         
         <table border="1">
             <th>accountID</th>
             <th>currentBalance</th>
             <th>Status</th>
             <tr>
-                <td>${requestScope.bankAccount.accountID}</a</td>
-                <td>${requestScope.bankAccount.currentBalance}</td>
-                <td>${requestScope.bankAccount.status}</td>
+                <td>${accountID}</a</td>
+                <td>${currentBalance}</td>
+                <td>${statusBL}</td>
             </tr>
         </table>
-            <form action="./DispatcherServlet?accountID=${requestScope.bankAccount.accountID}" method="POST">
+            <form action="./DispatcherServlet?accountID=${accountID}" method="POST">
                 <input type="submit" name="operation" value="add funds" />
                 <input type="submit" name="operation" value="make payment"/>
                 <input type="submit" name="operation" value="block account"/>

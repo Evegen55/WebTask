@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>All uccounts</title>
             <style rel="stylesheet" type="text/css">
             
 body {
@@ -44,17 +44,27 @@ a {
         <br />
         <h3>My bank accounts</h3>
         <br />
+        
         <table border="1">
             <th>Account number (id)</th>
             <th>Balance</th>
             <th>Status</th>
             <c:forEach items="${requestScope.list}" var="account">
+                <c:set var="accountID" value="${account.accountID}" />
+                <c:set var="currentBalance" value="${account.currentBalance}" />
+                <c:set var="status" value="${account.status}" />
+                <c:if test="${status == '1'}">
+                    <c:set var="statusBL" value="unblocked"></c:set>
+                </c:if>
+                <c:if test="${status == '2'}">
+                    <c:set var="statusBL" value="blocked"></c:set>
+                </c:if>
             <tr>
-                <td><a href="${pageContext.request.contextPath}/GetAccount?accountID=${account.accountID}">
-                    ${account.accountID}</a>
+                <td><a href="${pageContext.request.contextPath}/GetAccount?accountID=${accountID}">
+                    ${accountID}</a>
                 </td>
-                <td>${account.currentBalance}</td>
-                <td>${account.status}</td>
+                <td>${currentBalance}</td>
+                <td>${statusBL}</td>
             </tr>
             </c:forEach>
         </table>
