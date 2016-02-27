@@ -13,3 +13,8 @@ In this project next technologies have been used:
 
 Also next patterns have been used:
 -Model-Viev-Controller
+
+Developed with:
+- NetBeansIDE dev 201602200002 (http://bits.netbeans.org/dev/nightly/)
+- GlassFish-5.0 (http://download.oracle.com/glassfish/5.0/nightly/)
+- Microsoft SQL Server Express 2014
