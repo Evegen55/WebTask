@@ -154,5 +154,17 @@ public class AccountDAO {
         addMoney(bankAccount);
         writeHistory(bankAccount, bankAccount, clientID, clientID, amount);
     }
+
+    public void setBlockToAcount(int accountID_as_int) {
+        BankAccount bankAccountOld = getAccountByID_asSingleAccount(accountID_as_int);
+        BankAccount bankAccountNew = new BankAccount();
+        
+        bankAccountNew.setAccountID(accountID_as_int);
+        bankAccountNew.setClientID(bankAccountOld.getClientID());
+        bankAccountNew.setCurrentBalance(bankAccountOld.getCurrentBalance());
+        bankAccountNew.setStatus(2);
+        
+        em.merge(bankAccountNew);
+    }
   
 }

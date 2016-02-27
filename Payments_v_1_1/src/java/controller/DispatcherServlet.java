@@ -70,7 +70,8 @@ public class DispatcherServlet extends HttpServlet {
             request.setAttribute("accountID", accountID);
             request.getRequestDispatcher(destinationMakePayment_path).forward(request, response);
         } else if (operation.equalsIgnoreCase("block account")){
-            response.sendRedirect(response.encodeRedirectURL(destinationBlockAccount));
+            String accountID = request.getParameter("accountID");
+            response.sendRedirect(response.encodeRedirectURL(destinationBlockAccount+"?accountID="+accountID));
         } else {
             response.setContentType("text/html;charset=UTF-8");
         }
