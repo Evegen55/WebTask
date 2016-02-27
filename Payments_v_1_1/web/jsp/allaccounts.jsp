@@ -41,6 +41,7 @@ a {
         <a href="start.jsp" class='remember'>Start page</a>
         <a href="LogOut" class='remember'>Logout</a>
         
+        
         <br />
         <h3>My bank accounts</h3>
         <br />

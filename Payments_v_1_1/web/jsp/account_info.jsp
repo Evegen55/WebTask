@@ -61,6 +61,7 @@ input[type="submit"] {
         
         <a href="start.jsp" class='remember'>Start page</a>
         <a href="LogOut" class='remember'>Logout</a>
+        <a href="AllAccounts?userID=1" class='remember'>All accounts</a>
         
         <br />
         <h3>Info about bank account</h3>
