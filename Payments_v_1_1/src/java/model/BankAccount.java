@@ -42,7 +42,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "BankAccount.findAll", query = "SELECT b FROM BankAccount b"),
     @NamedQuery(name = "BankAccount.findByAccountID", query = "SELECT b FROM BankAccount b WHERE b.accountID = :accountID"),
-    @NamedQuery(name = "BankAccount.findByCurrentBalance", query = "SELECT b FROM BankAccount b WHERE b.currentBalance = :currentBalance")})
+    @NamedQuery(name = "BankAccount.findByCurrentBalance", query = "SELECT b FROM BankAccount b WHERE b.currentBalance = :currentBalance"),
+    @NamedQuery(name = "BankAccount.findByStatus", query = "SELECT b FROM BankAccount b WHERE b.status = :status")})
 public class BankAccount implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -55,6 +56,9 @@ public class BankAccount implements Serializable {
     @NotNull
     @Column(name = "currentBalance")
     private double currentBalance;
+    @Basic(optional = false)
+    @Column(name = "status")
+    private Integer status;
     @JoinColumn(name = "clientID", referencedColumnName = "clientID")
     @ManyToOne(optional = false)
     private Client clientID;
@@ -135,6 +139,22 @@ public class BankAccount implements Serializable {
      */
     public void setClientID(Client clientID) {
         this.clientID = clientID;
+    }
+
+    /**
+     * 
+     * @return 
+     */
+    public Integer getStatus() {
+        return status;
+    }
+
+    /**
+     * 
+     * @param status 
+     */
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     /**

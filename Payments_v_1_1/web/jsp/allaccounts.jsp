@@ -47,12 +47,14 @@ a {
         <table border="1">
             <th>Account number (id)</th>
             <th>Balance</th>
+            <th>Status</th>
             <c:forEach items="${requestScope.list}" var="account">
             <tr>
                 <td><a href="${pageContext.request.contextPath}/GetAccount?accountID=${account.accountID}">
                     ${account.accountID}</a>
                 </td>
                 <td>${account.currentBalance}</td>
+                <td>${account.status}</td>
             </tr>
             </c:forEach>
         </table>

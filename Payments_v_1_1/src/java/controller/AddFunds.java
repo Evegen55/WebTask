@@ -64,6 +64,9 @@ public class AddFunds extends HttpServlet {
         //create a new instance of BankAccount for using with EntityManager
         BankAccount bankAccount = new BankAccount(accountID_as_int,currentBalance_as_double);
         bankAccount.setClientID(clientID);
+        //getting prewious status
+        bankAccount.setStatus(accountDAO.getAccountByID_asSingleAccount(accountID_as_int).getStatus());
+        
         if (operation.equalsIgnoreCase("AddMoney")) {
             accountDAO.addMoneyWithHistory(bankAccount, clientID, currentBalance_as_double);
         }

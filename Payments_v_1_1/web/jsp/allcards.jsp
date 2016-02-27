@@ -46,13 +46,9 @@ a {
         <br />
         <table border="1">
             <th>Primary account number</th>
-            <th>Card security code</th>
-            <th>Valid thru</th>
             <c:forEach items="${requestScope.list}" var="card">
             <tr>
                 <td><a href="${pageContext.request.contextPath}/GetCard?cardID=${card.cardID}">${card.pan}</a></td>
-                <td>${card.secureCode}</td>
-                <td>${card.validDate}</td>
             </tr>
             </c:forEach>
         </table>

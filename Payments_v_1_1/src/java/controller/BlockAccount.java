@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Lartsev.
+ * Copyright 2016 Evegen.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,10 +25,10 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Lartsev
+ * @author Evegen
  */
-@WebServlet(name = "DispatcherServlet", urlPatterns = {"/DispatcherServlet"})
-public class DispatcherServlet extends HttpServlet {
+@WebServlet(name = "BlockAccount", urlPatterns = {"/BlockAccount"})
+public class BlockAccount extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,39 +41,18 @@ public class DispatcherServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Servlets
-        String operation = request.getParameter("operation");
-        String destinationCards  ="./AllCards";
-        String destinationAccounts  ="./AllAccounts";
-        String destinationPaymentsHist  ="./PaymentsHist";
-        String destinationBlockAccount  ="./BlockAccount";
-        //Paths
-        String destinationAddFunds_path  ="/jsp/addfunds.jsp";
-        String destinationMakePayment_path  ="/jsp/makepayment.jsp";
-        
-        if(operation.equalsIgnoreCase("my_cards")) {
-            response.sendRedirect(response.encodeRedirectURL(destinationCards));
-        } else if (operation.equalsIgnoreCase("my bank accounts")) {
-            response.sendRedirect(response.encodeRedirectURL(destinationAccounts));
-        } else if (operation.equalsIgnoreCase("payments")){
-            response.sendRedirect(response.encodeRedirectURL(destinationPaymentsHist));
-        } else if (operation.equalsIgnoreCase("add funds")){
-            //logic for redirect to addfunds.jsp with accountID attribute
-            response.setContentType("text/html;charset=UTF-8");
-            String accountID = request.getParameter("accountID");
-            request.setAttribute("accountID", accountID);
-            request.getRequestDispatcher(destinationAddFunds_path).forward(request, response);
-        } else if (operation.equalsIgnoreCase("make payment")){
-            //logic for redirect to makepayment.jsp 
-            response.setContentType("text/html;charset=UTF-8");
-            String accountID = request.getParameter("accountID");
-            /*System.out.println("accountID" + "\t" + accountID );*/
-            request.setAttribute("accountID", accountID);
-            request.getRequestDispatcher(destinationMakePayment_path).forward(request, response);
-        } else if (operation.equalsIgnoreCase("block account")){
-            response.sendRedirect(response.encodeRedirectURL(destinationBlockAccount));
-        } else {
-            response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet BlockAccount</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet BlockAccount at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

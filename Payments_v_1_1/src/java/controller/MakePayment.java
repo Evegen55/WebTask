@@ -72,13 +72,16 @@ public class MakePayment extends HttpServlet {
         Client client = clientDAO.getClientByID_asSingleClient(client_id);
         BankAccount bankAccount = new BankAccount(accountID_as_int,payment_as_double);
         bankAccount.setClientID(client);
-        
+        //getting prewious status
+        bankAccount.setStatus(accountDAO.getAccountByID_asSingleAccount(accountID_as_int).getStatus());
         //second client and his bank account
         BankAccount bankAccountBeneficiar = new BankAccount(beneficiarAccountID_as_int,payment_as_double);
         //getting ID of beneficiar(second client)
         BankAccount accountByID_asSingleAccount = accountDAO.getAccountByID_asSingleAccount(beneficiarAccountID_as_int);
         Client beneficiar = accountByID_asSingleAccount.getClientID();
         bankAccountBeneficiar.setClientID(beneficiar);
+        //getting prewious status
+        bankAccountBeneficiar.setStatus(accountDAO.getAccountByID_asSingleAccount(beneficiarAccountID_as_int).getStatus());
         
         if (operation.equalsIgnoreCase("Make a pay")) {
             accountDAO.makePay(bankAccount, bankAccountBeneficiar, client, beneficiar, payment_as_double);

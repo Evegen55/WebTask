@@ -48,7 +48,6 @@ a {
             <th>Primary account number</th>
             <th>Card security code</th>
             <th>Valid thru</th>
-            <th>Status</th>
             <th>Bank Account</th>
             <%--
             see how iterate ower list of cretit cards 
@@ -59,7 +58,6 @@ a {
                 <td>${card.pan}</a></td>
                 <td>${card.secureCode}</td>
                 <td>${card.validDate}</td>
-                <td>${card.status}</td>
                 <td>${card.accountID}</td>
             </tr>
             </c:forEach>
@@ -69,7 +67,6 @@ a {
                 <td>${requestScope.creditCard.pan}</a></td>
                 <td>${requestScope.creditCard.secureCode}</td>
                 <td>${requestScope.creditCard.validDate}</td>
-                <td>${requestScope.creditCard.status}</td>
                 <td><a href="${pageContext.request.contextPath}/GetAccount?accountID=${creditCard.accountID.accountID}">
                     ${requestScope.creditCard.accountID.accountID}
                 </td> 
