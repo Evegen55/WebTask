@@ -66,10 +66,10 @@ public class DispatcherServlet extends HttpServlet {
             //logic for redirect to makepayment.jsp 
             response.setContentType("text/html;charset=UTF-8");
             String accountID = request.getParameter("accountID");
-            /*System.out.println("accountID" + "\t" + accountID );*/
             request.setAttribute("accountID", accountID);
             request.getRequestDispatcher(destinationMakePayment_path).forward(request, response);
         } else if (operation.equalsIgnoreCase("block account")){
+            //logic fo invoke servlet with parameters
             String accountID = request.getParameter("accountID");
             response.sendRedirect(response.encodeRedirectURL(destinationBlockAccount+"?accountID="+accountID));
         } else {

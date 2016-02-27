@@ -49,6 +49,7 @@ public class AccountDAO {
     public List getAllAccountsByClientID() {
         //Now we've got decide how we can get a link between user John and clientID
         //in the next line clientID is just 1
+        //IT IS NOT CORRECT!!
         Client client = em.find(Client.class, 1);
         Collection col = client.getBankAccountCollection();
         List list;
