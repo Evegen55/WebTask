@@ -93,11 +93,18 @@ input[type="submit"] {
             <br />
             <form action="./DispatcherServlet?accountID=${accountID}" method="POST">
                 <%-- if bank account hasn't been blocked we can doing smth with --%>
-                <c:if test="${status == '1'}">
+                <c:choose>
+                    
+                    <c:when test="${status == '1'}">
                     <input type="submit" name="operation" value="add funds" />
                     <input type="submit" name="operation" value="make payment"/>
                     <input type="submit" name="operation" value="block account"/>
-                </c:if>
+                    </c:when>
+                    <c:otherwise>
+                        <a class='remember'>This banc account has been blocked. 
+                        You should ask tech support or administrator for unblocking.</a>
+                    </c:otherwise>
+                </c:choose>
             </form>
     </body>
 </html>
