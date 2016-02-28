@@ -12,9 +12,13 @@ In this project next technologies have been used:
 - JavaServer Pages Standard Tag Library (https://jstl.java.net/)
 
 Also next patterns have been used:
--Model-Viev-Controller
+- Model-Viev-Controller(MVC)
+- Data Access Object (DAO)
+- Command
+
 
 Developed with:
 - NetBeansIDE dev 201602200002 (http://bits.netbeans.org/dev/nightly/)
 - GlassFish-5.0 (http://download.oracle.com/glassfish/5.0/nightly/)
 - Microsoft SQL Server Express 2014
+- Microsoft JDBC Driver 6.0 for SQL Server (sqljdbc42.jar) 
