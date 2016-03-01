@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -168,11 +169,22 @@ input[type="green_button"] {
         <a href="Start" class='remember'>Start page</a>
         <a href="LogOut" class='remember'>Logout</a>
         
+        <c:if test="${not empty pageContext.request.userPrincipal}">
+            <c:set var="user"  value="${pageContext.request.userPrincipal.name}" />
+        </c:if>
+        
         <div class='login' >
             <form action="./DispatcherServlet" method="POST">
-                <input type="submit" name="operation" value="my_cards"/>
-                <input type="submit" name="operation" value='my bank accounts'/>
-                <input type="submit" name="operation" value='payments'/>
+                <c:choose>
+                    <c:when test="${user == 'admin'}">
+                        <c:redirect url="admin_for_unblocking/admin.jsp" />
+                    </c:when>
+                    <c:otherwise>
+                        <input type="submit" name="operation" value="my_cards"/>
+                        <input type="submit" name="operation" value='my bank accounts'/>
+                        <input type="submit" name="operation" value='payments'/>
+                    </c:otherwise>
+                </c:choose>
             </form>
         </div>
     </body>
