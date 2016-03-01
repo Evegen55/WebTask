@@ -36,11 +36,9 @@ public class PaymentsHistDAO {
      *
      * @return
      */
-    public List getAllPaymetnsHistoryByClientID() {
+    public List getAllPaymetnsHistoryByClientID(int id) {
         em.flush();
-        //Now we've got decide how we can get a link between user John and clientID
-        //in the next line clientID is just 1
-        Client client = em.find(Client.class, 1);
+        Client client = em.find(Client.class, id);
         Collection col = client.getPaymentsHistoryCollection();
         List list;
         if(col instanceof List) {

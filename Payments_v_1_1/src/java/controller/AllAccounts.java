@@ -23,7 +23,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Client;
 import model.ejb.AccountDAO;
+import model.ejb.ClientDAO;
 
 /**
  *
@@ -33,7 +35,7 @@ import model.ejb.AccountDAO;
 public class AllAccounts extends HttpServlet {
     
     @EJB private AccountDAO accountDAO;
-
+    @EJB private ClientDAO clientDAO;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -46,7 +48,10 @@ public class AllAccounts extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //List list = accountDAO.getAllAccounts();
-        List list = accountDAO.getAllAccountsByClientID();
+        String remoteUser = request.getRemoteUser();
+        Client client = clientDAO.getClientByNickName(remoteUser);
+        int client_id = client.getClientID();
+        List list = accountDAO.getAllAccountsByClientID(client_id);
         request.setAttribute("list", list);
         request.getRequestDispatcher("/jsp/allaccounts.jsp").forward(request, response);
     }

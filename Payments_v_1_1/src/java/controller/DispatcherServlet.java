@@ -16,6 +16,7 @@
 package controller;
 
 import java.io.IOException;
+import javax.annotation.security.DeclareRoles;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,6 +28,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Lartsev
  */
 @WebServlet(name = "DispatcherServlet", urlPatterns = {"/DispatcherServlet"})
+@DeclareRoles({"admn","ApplicationAdmin", "SimpleUser"})
 public class DispatcherServlet extends HttpServlet {
 
     /**
@@ -46,6 +48,7 @@ public class DispatcherServlet extends HttpServlet {
         String destinationAccounts  ="./AllAccounts";
         String destinationPaymentsHist  ="./PaymentsHist";
         String destinationBlockAccount  ="./BlockAccount";
+        String destinationAllBlockedCards  ="./AllBlockedCards";
         //Paths
         String destinationAddFunds_path  ="/jsp/addfunds.jsp";
         String destinationMakePayment_path  ="/jsp/makepayment.jsp";
@@ -72,7 +75,9 @@ public class DispatcherServlet extends HttpServlet {
             //logic fo invoke servlet with parameters
             String accountID = request.getParameter("accountID");
             response.sendRedirect(response.encodeRedirectURL(destinationBlockAccount+"?accountID="+accountID));
-        } else {
+        } else if (operation.equalsIgnoreCase("all blocked cards")){
+            response.sendRedirect(response.encodeRedirectURL(destinationAllBlockedCards));
+        }else {
             response.setContentType("text/html;charset=UTF-8");
         }
     }
