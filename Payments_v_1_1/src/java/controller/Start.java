@@ -16,22 +16,20 @@
 package controller;
 
 import java.io.IOException;
-import javax.ejb.EJB;
+import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.ejb.AccountDAO;
 
 /**
  *
  * @author Evegen
  */
-@WebServlet(name = "BlockAccount", urlPatterns = {"/BlockAccount"})
-public class BlockAccount extends HttpServlet {
-    
-    @EJB private AccountDAO accountDAO;
+@WebServlet(name = "Start", urlPatterns = {"/Start"})
+public class Start extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,12 +42,8 @@ public class BlockAccount extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String accountID = request.getParameter("accountID");
-        int accountID_as_int = Integer.parseInt(accountID);
-        //blocking account
-        accountDAO.setBlockToAcount(accountID_as_int);
-        //logic for redirect back to account_info.jsp via envoke another servlet
-        response.sendRedirect(response.encodeRedirectURL("./GetAccount?accountID="+accountID));
+        RequestDispatcher requestDispather = request.getRequestDispatcher("/jsp/start.jsp");
+        requestDispather.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

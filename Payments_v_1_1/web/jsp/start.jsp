@@ -165,7 +165,7 @@ input[type="green_button"] {
     </head>
     <body>
         
-        <a href="start.jsp" class='remember'>Start page</a>
+        <a href="Start" class='remember'>Start page</a>
         <a href="LogOut" class='remember'>Logout</a>
         
         <div class='login' >

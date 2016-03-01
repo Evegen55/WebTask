@@ -57,7 +57,7 @@ input[type="text"] {
 </style>
     </head>
     <body>
-        <a href="start.jsp" class='remember'>Start page</a>
+        <a href="Start" class='remember'>Start page</a>
         <a href="LogOut" class='remember'>Logout</a>
         <a href="${pageContext.request.contextPath}/PaymentsHist" class='remember'>Payment History</a>
         

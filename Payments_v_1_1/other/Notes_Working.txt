@@ -89,3 +89,51 @@ Confirm New Password = change
 из строки <td>${creditCards.pan}</a></td> файла allcards.jsp - 
 в данном контексте, когда вся информация по карте уже доступна в списке,
 выводить её отдельно не имеет смысла.
+
+
+
+//====================================================================================================
+
+Security
+
+
+Different types of components use different formats, or schemas, for their deployment descriptors. The security elements of deployment descriptors discussed in this tutorial include the following.
+
+- Web components may use a web application deployment descriptor named web.xml.
+
+- The schema for web component deployment descriptors is provided in Chapter 14 of the Java Servlet 3.1 specification (JSR 340), which can be downloaded from http://jcp.org/en/jsr/detail?id=340.
+
+- Enterprise JavaBeans components may use an EJB deployment descriptor named META-INF/ejb-jar.xml, contained in the EJB JAR file.
+
+- The schema for enterprise bean deployment descriptors is provided in Chapter 14 of the EJB 3.2 Core Contracts and Requirements Specification (JSR 345), which can be downloaded from http://jcp.org/en/jsr/detail?id=345.
+
+
+
+
+2)
+Realm Name: admin-realm
+User ID = admin
+Group List = asadmin
+New Password = admin
+Confirm New Password = admin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

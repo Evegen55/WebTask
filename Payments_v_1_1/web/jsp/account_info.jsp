@@ -59,7 +59,7 @@ input[type="submit"] {
     </head>
         <body>
         
-        <a href="start.jsp" class='remember'>Start page</a>
+        <a href="Start" class='remember'>Start page</a>
         <a href="LogOut" class='remember'>Logout</a>
         <a href="AllAccounts?userID=1" class='remember'>All accounts</a>
         
@@ -101,7 +101,7 @@ input[type="submit"] {
                     <input type="submit" name="operation" value="block account"/>
                     </c:when>
                     <c:otherwise>
-                        <a class='remember'>This banc account has been blocked. 
+                        <a class='remember'>This bank account has been blocked. 
                         You should ask tech support or administrator for unblocking.</a>
                     </c:otherwise>
                 </c:choose>
