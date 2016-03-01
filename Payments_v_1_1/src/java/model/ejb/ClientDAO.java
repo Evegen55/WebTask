@@ -27,6 +27,22 @@ import model.Client;
  */
 @Stateless
 public class ClientDAO {
+
+    /**
+     * 
+     * @param remoteUser
+     * @return 
+     */
+    public Client getClientByNickName(String remoteUser) {
+        List resultList = em.createNamedQuery("Client.findByNickName")
+                .setParameter("nickName", remoteUser)
+                .getResultList();
+        Client client = new Client();
+        if (resultList.size()>0) {
+            client = (Client) resultList.get(0);
+        }
+        return client;
+    }
     
     @PersistenceContext private EntityManager em;
 

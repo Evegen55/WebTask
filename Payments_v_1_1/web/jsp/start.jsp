@@ -170,7 +170,7 @@ input[type="green_button"] {
         <a href="LogOut" class='remember'>Logout</a>
         
         <c:if test="${not empty pageContext.request.userPrincipal}">
-            <c:set var="user"  value="${pageContext.request.userPrincipal.name}" />
+            <c:set var="user"  value="${pageContext.request.userPrincipal.name}" scope="session" />
         </c:if>
         
         <div class='login' >

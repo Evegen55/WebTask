@@ -23,7 +23,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Client;
 import model.ejb.CardDAO;
+import model.ejb.ClientDAO;
 
 /**
  *
@@ -32,6 +34,7 @@ import model.ejb.CardDAO;
 @WebServlet(name = "AllCards", urlPatterns = {"/AllCards"})
 public class AllCards extends HttpServlet {
     @EJB private CardDAO cardDAO;
+    @EJB private ClientDAO clientDAO;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,7 +47,9 @@ public class AllCards extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int client_id = 1;
+        String remoteUser = request.getRemoteUser();
+        Client client = clientDAO.getClientByNickName(remoteUser);
+        int client_id = client.getClientID();
         List list = cardDAO.getAllCardsByClientID(client_id);
         request.setAttribute("list", list);
         request.getRequestDispatcher("/jsp/allcards.jsp").forward(request, response);
