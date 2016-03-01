@@ -16,22 +16,24 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.annotation.security.DeclareRoles;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.ejb.AccountDAO;
 
 /**
  *
  * @author Evegen
  */
 @WebServlet(name = "AllBlockedCards", urlPatterns = {"/AllBlockedCards"})
-@DeclareRoles({"admn","ApplicationAdmin", "SimpleUser"})
 public class AllBlockedCards extends HttpServlet {
 
+    @EJB private AccountDAO accountDAO;
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,19 +45,11 @@ public class AllBlockedCards extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AllBlockedCards</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AllBlockedCards at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        int status_blocked = 2;
+        List list = accountDAO.getAllAccountsByStatus(status_blocked);
+        //List list = accountDAO.getAllAccounts();
+        request.setAttribute("list", list);
+        request.getRequestDispatcher("/admin_for_unblocking/allblockedacc.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

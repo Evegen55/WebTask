@@ -1,15 +1,16 @@
 <%-- 
-    Document   : admin
-    Created on : 01.03.2016, 12:20:09
+    Document   : allblockedacc
+    Created on : 01.03.2016, 21:06:46
     Author     : Evegen
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Admin's Page</title>
+        <title>Accounts that have been blocked</title>
         <style rel="stylesheet" type="text/css">
             
 body {
@@ -165,12 +166,24 @@ input[type="green_button"] {
     </head>
     <body>
         
-        <a href="../LogOut" class='remember'>Logout</a>
+        <a href="LogOut" class='remember'>Logout</a>
         
-        <div class='login' >
-            <form action="../DispatcherServlet" method="POST">
-                <input type="submit" name="operation" value="all blocked cards"/>
-            </form>
-        </div>
+        <br />
+        <h3>Blocked accounts</h3>
+        <br />
+        
+        <table border="1">
+            <th>Account number (id)</th>
+            <th>Status</th>
+            <c:forEach items="${requestScope.list}" var="account">
+                <c:set var="accountID" value="${account.accountID}" />
+                <c:set var="status" value="${account.status}" />
+            <tr>
+                <td>${accountID}</a>
+                </td>
+                <td>${status}</td>
+            </tr>
+            </c:forEach>
+        </table>
     </body>
 </html>

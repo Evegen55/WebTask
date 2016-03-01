@@ -44,6 +44,7 @@ public class AccountDAO {
     
     /**
      *
+     * @param id
      * @return
      */
     public List getAllAccountsByClientID(int id) {
@@ -163,6 +164,14 @@ public class AccountDAO {
         bankAccountNew.setStatus(2);
         
         em.merge(bankAccountNew);
+    }
+
+    public List getAllAccountsByStatus(int status_blocked) {
+        System.out.println("//---------------------------------------------");
+        List resultList = em.createNamedQuery("BankAccount.findByStatus")
+                .setParameter("status", status_blocked)
+                .getResultList();
+        return resultList;
     }
   
 }
