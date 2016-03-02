@@ -162,8 +162,6 @@ input[type="submit"]:hover {
                     <label for='remember'></label>Remember me
                 </div>
                 <input type='submit' value='Log in'/>
-                <a class='forgot' href='#'>Forgot your password??</a>
-                <a class='forgot' href="GetRegPage">Create a new account</a>
             </form>
         </div>
     </body>
