@@ -34,6 +34,7 @@ public class PaymentsHistDAO {
 
     /**
      *
+     * @param id
      * @return
      */
     public List getAllPaymetnsHistoryByClientID(int id) {

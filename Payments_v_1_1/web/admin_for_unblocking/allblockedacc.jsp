@@ -161,11 +161,10 @@ input[type="green_button"] {
   color: #6d7781;
 }
 
-
 </style>
+
     </head>
     <body>
-        
         <a href="LogOut" class='remember'>Logout</a>
         
         <br />
@@ -178,10 +177,15 @@ input[type="green_button"] {
             <c:forEach items="${requestScope.list}" var="account">
                 <c:set var="accountID" value="${account.accountID}" />
                 <c:set var="status" value="${account.status}" />
+                <c:if test="${status == '2'}">
+                    <c:set var="statusBL" value="blocked"></c:set>
+                </c:if>
             <tr>
                 <td>${accountID}</a>
                 </td>
-                <td>${status}</td>
+                <td><a href="${pageContext.request.contextPath}/UnblockAcc?accountID=${accountID}">
+                        ${statusBL}</a>
+                </td>
             </tr>
             </c:forEach>
         </table>

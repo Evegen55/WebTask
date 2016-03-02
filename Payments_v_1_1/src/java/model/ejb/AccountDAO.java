@@ -154,6 +154,10 @@ public class AccountDAO {
         writeHistory(bankAccount, bankAccount, clientID, clientID, amount);
     }
 
+    /**
+     *
+     * @param accountID_as_int
+     */
     public void setBlockToAcount(int accountID_as_int) {
         BankAccount bankAccountOld = getAccountByID_asSingleAccount(accountID_as_int);
         BankAccount bankAccountNew = new BankAccount();
@@ -166,12 +170,32 @@ public class AccountDAO {
         em.merge(bankAccountNew);
     }
 
+    /**
+     *
+     * @param status_blocked
+     * @return
+     */
     public List getAllAccountsByStatus(int status_blocked) {
-        System.out.println("//---------------------------------------------");
         List resultList = em.createNamedQuery("BankAccount.findByStatus")
                 .setParameter("status", status_blocked)
                 .getResultList();
         return resultList;
+    }
+
+    /**
+     * 
+     * @param accountID_as_int 
+     */
+    public void setUnblockToAcount(int accountID_as_int) {
+        BankAccount bankAccountOld = getAccountByID_asSingleAccount(accountID_as_int);
+        BankAccount bankAccountNew = new BankAccount();
+        
+        bankAccountNew.setAccountID(accountID_as_int);
+        bankAccountNew.setClientID(bankAccountOld.getClientID());
+        bankAccountNew.setCurrentBalance(bankAccountOld.getCurrentBalance());
+        bankAccountNew.setStatus(1);
+        
+        em.merge(bankAccountNew);
     }
   
 }

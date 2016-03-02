@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Lartsev.
+ * Copyright 2016 Evegen.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,23 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import model.ejb.AccountDAO;
 
 /**
  *
- * @author Lartsev
+ * @author Evegen
  */
-@WebServlet(name = "LogOut", urlPatterns = {"/LogOut"})
-public class LogOut extends HttpServlet {
+@WebServlet(name = "UnblockAcc", urlPatterns = {"/UnblockAcc"})
+public class UnblockAcc extends HttpServlet {
+    
+    @EJB private AccountDAO accountDAO;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,24 +45,12 @@ public class LogOut extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Shut down a session
-        response.setContentType("text/html");
-    	Cookie[] cookies = request.getCookies();
-    	if(cookies != null){
-    	for(Cookie cookie : cookies){
-    		if(cookie.getName().equals("JSESSIONID")){
-    			System.out.println("JSESSIONID="+cookie.getValue());
-    			break;
-    		}
-    	    }
-    	}
-    	//invalidate the session if exists
-    	HttpSession session = request.getSession(false);
-    	System.out.println("User="+session.getAttribute("user"));
-    	if(session != null){
-    		session.invalidate();
-    	}
-        response.sendRedirect("login.jsp");
+        String accountID = request.getParameter("accountID");
+        int accountID_as_int = Integer.parseInt(accountID);
+        //blocking account
+        accountDAO.setUnblockToAcount(accountID_as_int);
+        //logic for redirect back to account_info.jsp via envoke another servlet
+        response.sendRedirect(response.encodeRedirectURL("./AllBlockedAcc"));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

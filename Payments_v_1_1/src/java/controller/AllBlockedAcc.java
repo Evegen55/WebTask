@@ -29,8 +29,8 @@ import model.ejb.AccountDAO;
  *
  * @author Evegen
  */
-@WebServlet(name = "AllBlockedCards", urlPatterns = {"/AllBlockedCards"})
-public class AllBlockedCards extends HttpServlet {
+@WebServlet(name = "AllBlockedAcc", urlPatterns = {"/AllBlockedAcc"})
+public class AllBlockedAcc extends HttpServlet {
 
     @EJB private AccountDAO accountDAO;
     
