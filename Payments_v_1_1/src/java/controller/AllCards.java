@@ -52,7 +52,7 @@ public class AllCards extends HttpServlet {
         int client_id = client.getClientID();
         List list = cardDAO.getAllCardsByClientID(client_id);
         request.setAttribute("list", list);
-        request.getRequestDispatcher("/jsp/allcards.jsp").forward(request, response);
+        request.getRequestDispatcher("/simpleuser/allcards.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

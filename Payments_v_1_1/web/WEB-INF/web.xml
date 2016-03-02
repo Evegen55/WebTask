@@ -18,7 +18,7 @@
         </web-resource-collection>
         <auth-constraint>
             <description/>
-            <role-name>admin</role-name>
+            <role-name>Admin</role-name>
         </auth-constraint>
     </security-constraint>
     <security-constraint>
@@ -26,12 +26,24 @@
         <web-resource-collection>
             <web-resource-name>all</web-resource-name>
             <description/>
-            <url-pattern>/*</url-pattern>
+            <url-pattern>/jsp/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description/>
             <role-name>SimpleUser</role-name>
-            <role-name>admin</role-name>
+            <role-name>Admin</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <security-constraint>
+        <display-name>ForSimpleUserOnly</display-name>
+        <web-resource-collection>
+            <web-resource-name>Simple_users_only</web-resource-name>
+            <description/>
+            <url-pattern>/simpleuser/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <description/>
+            <role-name>SimpleUser</role-name>
         </auth-constraint>
     </security-constraint>
     <login-config>
@@ -47,6 +59,6 @@
     </security-role>
     <security-role>
         <description>administrator</description>
-        <role-name>admin</role-name>
+        <role-name>Admin</role-name>
     </security-role>
 </web-app>

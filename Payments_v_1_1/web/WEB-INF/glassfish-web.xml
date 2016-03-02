@@ -6,7 +6,7 @@
     <group-name>SimpleUser</group-name>
   </security-role-mapping>
   <security-role-mapping>
-    <role-name>admin</role-name>
+    <role-name>Admin</role-name>
     <group-name>ApplicationAdmin</group-name>
   </security-role-mapping>
   <class-loader delegate="true"/>

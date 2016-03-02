@@ -28,7 +28,6 @@ import javax.servlet.http.HttpServletResponse;
  * @author Lartsev
  */
 @WebServlet(name = "DispatcherServlet", urlPatterns = {"/DispatcherServlet"})
-@DeclareRoles({"admn","ApplicationAdmin", "SimpleUser"})
 public class DispatcherServlet extends HttpServlet {
 
     /**
