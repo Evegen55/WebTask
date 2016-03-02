@@ -60,8 +60,8 @@ public class MakePayment extends HttpServlet {
         + "accountID" + "\t" + accountID + "\t"
         + "beneficiarAccountID" + "\t" + beneficiarAccountID);*/
         
-        //REWRITE IT!!!
-        int client_id = 1;//IT'S NOT CORRECT!!!
+        String remoteUser = request.getRemoteUser();
+        Client client = clientDAO.getClientByNickName(remoteUser);
         
         int accountID_as_int = Integer.parseInt(accountID);
         int beneficiarAccountID_as_int = Integer.parseInt(beneficiarAccountID);
@@ -69,7 +69,7 @@ public class MakePayment extends HttpServlet {
         
         //find a clients and his bank accounts
         //first client and his account
-        Client client = clientDAO.getClientByID_asSingleClient(client_id);
+        //Client client = clientDAO.getClientByID_asSingleClient(client_id);
         BankAccount bankAccount = new BankAccount(accountID_as_int,payment_as_double);
         bankAccount.setClientID(client);
         //getting prewious status
@@ -88,7 +88,7 @@ public class MakePayment extends HttpServlet {
         }
         //logic for redirect back to makepayment.jsp 
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("/jsp/makepayment.jsp").forward(request, response);
+        request.getRequestDispatcher("/simpleuser/makepayment.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

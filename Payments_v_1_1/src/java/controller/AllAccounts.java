@@ -53,7 +53,7 @@ public class AllAccounts extends HttpServlet {
         int client_id = client.getClientID();
         List list = accountDAO.getAllAccountsByClientID(client_id);
         request.setAttribute("list", list);
-        request.getRequestDispatcher("/jsp/allaccounts.jsp").forward(request, response);
+        request.getRequestDispatcher("/simpleuser/allaccounts.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

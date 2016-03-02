@@ -169,7 +169,7 @@ input[type="green_button"] {
         
         <div class='login' >
             <form action="../DispatcherServlet" method="POST">
-                <input type="submit" name="operation" value="all blocked cards"/>
+                <input type="submit" name="operation" value="all blocked accounts"/>
             </form>
         </div>
     </body>

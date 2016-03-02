@@ -52,7 +52,7 @@ public class GetCard extends HttpServlet {
         
         CreditCards creditCard = cardDAO.getCardByID_asSingleCard(ID_req_int);
         request.setAttribute("creditCard", creditCard);
-        request.getRequestDispatcher("/jsp/cardinfo.jsp").forward(request, response);
+        request.getRequestDispatcher("/simpleuser/cardinfo.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

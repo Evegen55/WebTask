@@ -53,7 +53,7 @@ public class PaymentsHist extends HttpServlet {
         int client_id = client.getClientID();
         List list = paymentsHistDAO.getAllPaymetnsHistoryByClientID(client_id);
         request.setAttribute("list", list);
-        request.getRequestDispatcher("/jsp/payments_history.jsp").forward(request, response);
+        request.getRequestDispatcher("/simpleuser/payments_history.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

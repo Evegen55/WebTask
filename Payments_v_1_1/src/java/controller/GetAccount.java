@@ -50,7 +50,7 @@ public class GetAccount extends HttpServlet {
         int ID_req_int = Integer.parseInt(ID_req);
         BankAccount bankAccount = accountDAO.getAccountByID_asSingleAccount(ID_req_int);
         request.setAttribute("bankAccount", bankAccount);
-        request.getRequestDispatcher("/jsp/account_info.jsp").forward(request, response);
+        request.getRequestDispatcher("/simpleuser/account_info.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

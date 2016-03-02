@@ -49,8 +49,8 @@ public class DispatcherServlet extends HttpServlet {
         String destinationBlockAccount  ="./BlockAccount";
         String destinationAllBlockedAcc  ="./AllBlockedAcc";
         //Paths
-        String destinationAddFunds_path  ="/jsp/addfunds.jsp";
-        String destinationMakePayment_path  ="/jsp/makepayment.jsp";
+        String destinationAddFunds_path  ="/simpleuser/addfunds.jsp";
+        String destinationMakePayment_path  ="/simpleuser/makepayment.jsp";
         
         if(operation.equalsIgnoreCase("my_cards")) {
             response.sendRedirect(response.encodeRedirectURL(destinationCards));
@@ -74,7 +74,7 @@ public class DispatcherServlet extends HttpServlet {
             //logic fo invoke servlet with parameters
             String accountID = request.getParameter("accountID");
             response.sendRedirect(response.encodeRedirectURL(destinationBlockAccount+"?accountID="+accountID));
-        } else if (operation.equalsIgnoreCase("all blocked cards")){
+        } else if (operation.equalsIgnoreCase("all blocked accounts")){
             response.sendRedirect(response.encodeRedirectURL(destinationAllBlockedAcc));
         }else {
             response.setContentType("text/html;charset=UTF-8");

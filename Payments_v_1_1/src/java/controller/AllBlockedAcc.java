@@ -49,7 +49,7 @@ public class AllBlockedAcc extends HttpServlet {
         List list = accountDAO.getAllAccountsByStatus(status_blocked);
         //List list = accountDAO.getAllAccounts();
         request.setAttribute("list", list);
-        request.getRequestDispatcher("/admin_for_unblocking/allblockedacc.jsp").forward(request, response);
+        request.getRequestDispatcher("admin_for_unblocking/allblockedacc.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

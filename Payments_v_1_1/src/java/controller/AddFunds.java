@@ -54,13 +54,13 @@ public class AddFunds extends HttpServlet {
         //test code
         //System.out.println("accountID from request in the business logic" + "\t" + accountID);
         
-        //REWRITE IT!!!
-        int client_id = 1;//IT'S NOT CORRECT!!!
+        String remoteUser = request.getRemoteUser();
+        Client clientID = clientDAO.getClientByNickName(remoteUser);
         
         int accountID_as_int = Integer.parseInt(accountID);
         double currentBalance_as_double = Double.parseDouble(newBalance);
         
-        Client clientID = clientDAO.getClientByID_asSingleClient(client_id);
+        //Client clientID = clientDAO.getClientByID_asSingleClient(client_id);
         //create a new instance of BankAccount for using with EntityManager
         BankAccount bankAccount = new BankAccount(accountID_as_int,currentBalance_as_double);
         bankAccount.setClientID(clientID);
@@ -72,7 +72,7 @@ public class AddFunds extends HttpServlet {
         }
         //logic for redirect back to addfunds.jsp 
         response.setContentType("text/html;charset=UTF-8");
-        request.getRequestDispatcher("/jsp/addfunds.jsp").forward(request, response);
+        request.getRequestDispatcher("/simpleuser/addfunds.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
