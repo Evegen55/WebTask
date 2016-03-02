@@ -76,7 +76,7 @@ public class DispatcherServlet extends HttpServlet {
             response.sendRedirect(response.encodeRedirectURL(destinationBlockAccount+"?accountID="+accountID));
         } else if (operation.equalsIgnoreCase("all blocked accounts")){
             response.sendRedirect(response.encodeRedirectURL(destinationAllBlockedAcc));
-        }else {
+        } else {
             response.setContentType("text/html;charset=UTF-8");
         }
     }

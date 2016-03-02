@@ -52,7 +52,9 @@ public class PaymentsHist extends HttpServlet {
         Client client = clientDAO.getClientByNickName(remoteUser);
         int client_id = client.getClientID();
         List list = paymentsHistDAO.getAllPaymetnsHistoryByClientID(client_id);
+        List listIncoming = paymentsHistDAO.getAllPaymetnsHistoryByBeneficiarID(client_id);
         request.setAttribute("list", list);
+        request.setAttribute("listIncoming", listIncoming);
         request.getRequestDispatcher("/simpleuser/payments_history.jsp").forward(request, response);
     }
 

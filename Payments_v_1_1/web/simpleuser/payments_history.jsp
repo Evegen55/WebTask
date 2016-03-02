@@ -42,7 +42,7 @@ a {
         <a href="LogOut" class='remember'>Logout</a>
         
         <br />
-        <h3>My payments</h3>
+        <h3>My outcoming payments</h3>
         <br />
         <table border="1">
             <th>paymentID</th>
@@ -57,6 +57,25 @@ a {
                 <td>${pay_hist.clientAccountID.accountID}</td>
                 <td>${pay_hist.beneficiarAccountID.accountID}</td>
                 <td>${pay_hist.beneficiarClienstID.clientID}</td>
+            </tr>
+            </c:forEach>
+        </table>
+        <br />
+        <h3>My incoming payments</h3>
+        <br />
+        <table border="1">
+            <th>paymentID</th>
+            <th>amount</th>
+            <th>From(MyAccountID)</th>
+            <th>To(beneficiarAccountID)</th>
+            <th>Beneficiar(beneficiarClienstID)</th>
+            <c:forEach items="${requestScope.listIncoming}" var="pay_histInc">
+            <tr>
+                <td>${pay_histInc.paymentID}</a></td>
+                <td>${pay_histInc.amount}</td>
+                <td>${pay_histInc.clientAccountID.accountID}</td>
+                <td>${pay_histInc.beneficiarAccountID.accountID}</td>
+                <td>${pay_histInc.beneficiarClienstID.clientID}</td>
             </tr>
             </c:forEach>
         </table>

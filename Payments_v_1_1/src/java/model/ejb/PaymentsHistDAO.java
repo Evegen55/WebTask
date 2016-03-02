@@ -49,4 +49,21 @@ public class PaymentsHistDAO {
         }
         return list;
     }
+    /**
+     * 
+     * @param id
+     * @return 
+     */
+    public List getAllPaymetnsHistoryByBeneficiarID(int id) {
+        em.flush();
+        Client client = em.find(Client.class, id);
+        Collection col = client.getPaymentsHistoryCollection1();
+        List list;
+        if(col instanceof List) {
+        list = (List)col;
+        } else {
+        list= new ArrayList(col);
+        }
+        return list;
+    }
 }
