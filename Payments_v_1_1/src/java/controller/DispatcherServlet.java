@@ -16,7 +16,6 @@
 package controller;
 
 import java.io.IOException;
-import javax.annotation.security.DeclareRoles;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -41,43 +40,47 @@ public class DispatcherServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Servlets
-        String operation = request.getParameter("operation");
-        String destinationCards  ="./AllCards";
-        String destinationAccounts  ="./AllAccounts";
-        String destinationPaymentsHist  ="./PaymentsHist";
-        String destinationBlockAccount  ="./BlockAccount";
-        String destinationAllBlockedAcc  ="./AllBlockedAcc";
-        //Paths
-        String destinationAddFunds_path  ="/simpleuser/addfunds.jsp";
-        String destinationMakePayment_path  ="/simpleuser/makepayment.jsp";
-        
-        if(operation.equalsIgnoreCase("my_cards")) {
-            response.sendRedirect(response.encodeRedirectURL(destinationCards));
-        } else if (operation.equalsIgnoreCase("my bank accounts")) {
-            response.sendRedirect(response.encodeRedirectURL(destinationAccounts));
-        } else if (operation.equalsIgnoreCase("payments")){
-            response.sendRedirect(response.encodeRedirectURL(destinationPaymentsHist));
-        } else if (operation.equalsIgnoreCase("add funds")){
-            //logic for redirect to addfunds.jsp with accountID attribute
-            response.setContentType("text/html;charset=UTF-8");
-            String accountID = request.getParameter("accountID");
-            request.setAttribute("accountID", accountID);
-            request.getRequestDispatcher(destinationAddFunds_path).forward(request, response);
-        } else if (operation.equalsIgnoreCase("make payment")){
-            //logic for redirect to makepayment.jsp 
-            response.setContentType("text/html;charset=UTF-8");
-            String accountID = request.getParameter("accountID");
-            request.setAttribute("accountID", accountID);
-            request.getRequestDispatcher(destinationMakePayment_path).forward(request, response);
-        } else if (operation.equalsIgnoreCase("block account")){
-            //logic fo invoke servlet with parameters
-            String accountID = request.getParameter("accountID");
-            response.sendRedirect(response.encodeRedirectURL(destinationBlockAccount+"?accountID="+accountID));
-        } else if (operation.equalsIgnoreCase("all blocked accounts")){
-            response.sendRedirect(response.encodeRedirectURL(destinationAllBlockedAcc));
-        } else {
-            response.setContentType("text/html;charset=UTF-8");
+        try {
+            //Servlets
+            String operation = request.getParameter("operation");
+            String destinationCards = "./AllCards";
+            String destinationAccounts = "./AllAccounts";
+            String destinationPaymentsHist = "./PaymentsHist";
+            String destinationBlockAccount = "./BlockAccount";
+            String destinationAllBlockedAcc = "./AllBlockedAcc";
+            //Paths
+            String destinationAddFunds_path = "/simpleuser/addfunds.jsp";
+            String destinationMakePayment_path = "/simpleuser/makepayment.jsp";
+            
+            if (operation.equalsIgnoreCase("my_cards")) {
+                response.sendRedirect(response.encodeRedirectURL(destinationCards));
+            } else if (operation.equalsIgnoreCase("my bank accounts")) {
+                response.sendRedirect(response.encodeRedirectURL(destinationAccounts));
+            } else if (operation.equalsIgnoreCase("payments")) {
+                response.sendRedirect(response.encodeRedirectURL(destinationPaymentsHist));
+            } else if (operation.equalsIgnoreCase("add funds")) {
+                //logic for redirect to addfunds.jsp with accountID attribute
+                response.setContentType("text/html;charset=UTF-8");
+                String accountID = request.getParameter("accountID");
+                request.setAttribute("accountID", accountID);
+                request.getRequestDispatcher(destinationAddFunds_path).forward(request, response);
+            } else if (operation.equalsIgnoreCase("make payment")) {
+                //logic for redirect to makepayment.jsp 
+                response.setContentType("text/html;charset=UTF-8");
+                String accountID = request.getParameter("accountID");
+                request.setAttribute("accountID", accountID);
+                request.getRequestDispatcher(destinationMakePayment_path).forward(request, response);
+            } else if (operation.equalsIgnoreCase("block account")) {
+                //logic fo invoke servlet with parameters
+                String accountID = request.getParameter("accountID");
+                response.sendRedirect(response.encodeRedirectURL(destinationBlockAccount + "?accountID=" + accountID));
+            } else if (operation.equalsIgnoreCase("all blocked accounts")) {
+                response.sendRedirect(response.encodeRedirectURL(destinationAllBlockedAcc));
+            } else {
+                response.setContentType("text/html;charset=UTF-8");
+            }
+        } catch (IOException | ServletException iOException) {
+            System.out.println("Error occure DispatcherServlet" + "\t" + iOException);
         }
     }
 

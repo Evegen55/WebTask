@@ -19,7 +19,7 @@
         </H1>
         
         <P>
-            It may happens for one of many reasons. Please, reload previous page ou comtact with tech support
+            It may happens for one of many reasons. Please, reload previous page or contact with tech support
         </P>
     </body>
 </html>

@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 Lartsev.
+ * Copyright 2016 Evegen.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,20 +16,19 @@
 package controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Lartsev
+ * @author Evegen
  */
-@WebServlet(name = "LogOut", urlPatterns = {"/LogOut"})
-public class LogOut extends HttpServlet {
+@WebServlet(name = "DispatherAccounts", urlPatterns = {"/DispatherAccounts"})
+public class DispatherAccounts extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,25 +41,22 @@ public class LogOut extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Shut down a session
-        response.setContentType("text/html");
-    	Cookie[] cookies = request.getCookies();
-    	if(cookies != null){
-    	for(Cookie cookie : cookies){
-    		if(cookie.getName().equals("JSESSIONID")){
-    			System.out.println("JSESSIONID="+cookie.getValue());
-    			break;
-    		}
-    	    }
-    	}
-    	//invalidate the session if exists
-    	HttpSession session = request.getSession(false);
-    	System.out.println("User="+session.getAttribute("user"));
-    	if(session != null){
-    	    session.invalidate();
+        response.setContentType("text/html;charset=UTF-8");
+        try {
+            
+            String remoteUser = request.getRemoteUser();
+            String admMainPage = "/admin_for_unblocking/admin.jsp";
+            String usrMainPage = "/simpleuser/main_page.jsp";
+            
+            if(remoteUser.equalsIgnoreCase("admin")) {
+                request.getRequestDispatcher(admMainPage).forward(request, response);
+            } else {
+                request.getRequestDispatcher(usrMainPage).forward(request, response);
+            }
+        
+        } catch (ServletException | IOException iOException){
+            System.out.println("Error occure DispatcherAccounts" + "\t" + iOException);
         }
-        request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
-        //response.sendRedirect("login.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

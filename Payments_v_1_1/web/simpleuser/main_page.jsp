@@ -1,15 +1,16 @@
 <%-- 
-    Document   : admin
-    Created on : 01.03.2016, 12:20:09
+    Document   : main_page
+    Created on : 05.03.2016, 10:35:57
     Author     : Evegen
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Admin's Page</title>
+        <title>Main users Page</title>
         <style rel="stylesheet" type="text/css">
             
 body {
@@ -164,12 +165,13 @@ input[type="green_button"] {
 </style>
     </head>
     <body>
-        
+        <a href="./Start" class='remember'>Start page</a>
         <a href="./LogOut" class='remember'>Logout</a>
-        
         <div class='login' >
             <form action="./DispatcherServlet" method="POST">
-                <input type="submit" name="operation" value="all blocked accounts"/>
+                <input type="submit" name="operation" value="my_cards"/>
+                <input type="submit" name="operation" value='my bank accounts'/>
+                <input type="submit" name="operation" value='payments'/>
             </form>
         </div>
     </body>
