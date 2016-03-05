@@ -57,8 +57,8 @@ input[type="text"] {
 </style>
     </head>
     <body>
-        <a href="Start" class='remember'>Start page</a>
-        <a href="LogOut" class='remember'>Logout</a>
+        <a href="${pageContext.request.contextPath}/Start" class='remember'>Start page</a>
+        <a href="${pageContext.request.contextPath}/LogOut" class='remember'>Logout</a>
         <a href="${pageContext.request.contextPath}/AllAccounts" class='remember'>All accounts</a>
         
         <br />

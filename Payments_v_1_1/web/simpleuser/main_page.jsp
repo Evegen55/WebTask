@@ -165,10 +165,10 @@ input[type="green_button"] {
 </style>
     </head>
     <body>
-        <a href="./Start" class='remember'>Start page</a>
-        <a href="./LogOut" class='remember'>Logout</a>
+        <a href="${pageContext.request.contextPath}/Start" class='remember'>Start page</a>
+        <a href="${pageContext.request.contextPath}/LogOut" class='remember'>Logout</a>
         <div class='login' >
-            <form action="./DispatcherServlet" method="POST">
+            <form action="${pageContext.request.contextPath}/DispatcherServlet" method="POST">
                 <input type="submit" name="operation" value="my_cards"/>
                 <input type="submit" name="operation" value='my bank accounts'/>
                 <input type="submit" name="operation" value='payments'/>

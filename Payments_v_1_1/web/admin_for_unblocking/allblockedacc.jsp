@@ -165,7 +165,7 @@ input[type="green_button"] {
 
     </head>
     <body>
-        <a href="LogOut" class='remember'>Logout</a>
+        <a href="${pageContext.request.contextPath}/LogOut" class='remember'>Logout</a>
         
         <br />
         <h3>Blocked accounts</h3>

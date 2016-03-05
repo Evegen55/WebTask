@@ -38,8 +38,8 @@ a {
     </head>
     <body>
         
-        <a href="Start" class='remember'>Start page</a>
-        <a href="LogOut" class='remember'>Logout</a>
+        <a href="${pageContext.request.contextPath}/Start" class='remember'>Start page</a>
+        <a href="${pageContext.request.contextPath}/LogOut" class='remember'>Logout</a>
         
         <br />
         <h3>My outcoming payments</h3>

@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>account info page</title>
         <style rel="stylesheet" type="text/css">
             
 body {
@@ -59,9 +59,9 @@ input[type="submit"] {
     </head>
         <body>
         
-        <a href="Start" class='remember'>Start page</a>
-        <a href="LogOut" class='remember'>Logout</a>
-        <a href="AllAccounts" class='remember'>All accounts</a>
+        <a href="${pageContext.request.contextPath}/Start" class='remember'>Start page</a>
+        <a href="${pageContext.request.contextPath}/LogOut" class='remember'>Logout</a>
+        <a href="${pageContext.request.contextPath}/AllAccounts" class='remember'>All accounts</a>
         
         <br />
         <h3>Info about bank account</h3>

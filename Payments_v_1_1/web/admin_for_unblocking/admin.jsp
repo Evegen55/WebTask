@@ -165,10 +165,10 @@ input[type="green_button"] {
     </head>
     <body>
         
-        <a href="./LogOut" class='remember'>Logout</a>
+        <a href="${pageContext.request.contextPath}/LogOut" class='remember'>Logout</a>
         
         <div class='login' >
-            <form action="./DispatcherServlet" method="POST">
+            <form action="${pageContext.request.contextPath}/DispatcherServlet" method="POST">
                 <input type="submit" name="operation" value="all blocked accounts"/>
             </form>
         </div>
