@@ -31,6 +31,10 @@
             <description/>
             <role-name>Admin</role-name>
         </auth-constraint>
+        <user-data-constraint>
+            <description/>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
     <security-constraint>
         <display-name>For all users</display-name>
@@ -44,6 +48,10 @@
             <role-name>SimpleUser</role-name>
             <role-name>Admin</role-name>
         </auth-constraint>
+        <user-data-constraint>
+            <description/>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
     <security-constraint>
         <display-name>ForSimpleUserOnly</display-name>
@@ -56,6 +64,10 @@
             <description/>
             <role-name>SimpleUser</role-name>
         </auth-constraint>
+        <user-data-constraint>
+            <description/>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
     </security-constraint>
     <login-config>
         <auth-method>FORM</auth-method>

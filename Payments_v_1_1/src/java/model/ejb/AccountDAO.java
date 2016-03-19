@@ -49,7 +49,7 @@ public class AccountDAO {
      */
     public List getAllAccountsByClientID(int id) {
         Client client = em.find(Client.class, id);
-        Collection col = client.getBankAccountCollection();
+        Collection<BankAccount> col = client.getBankAccountCollection();
         List list;
         if(col instanceof List) {
         list = (List)col;

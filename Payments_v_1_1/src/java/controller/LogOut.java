@@ -43,23 +43,23 @@ public class LogOut extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-//Shut down a session
+            //Shut down a session
             response.setContentType("text/html");
-            Cookie[] cookies = request.getCookies();
+            /*Cookie[] cookies = request.getCookies();
             if (cookies != null) {
-                for (Cookie cookie : cookies) {
-                    if (cookie.getName().equals("JSESSIONID")) {
-                        System.out.println("JSESSIONID=" + cookie.getValue());
-                        break;
-                    }
-                }
+            for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("JSESSIONID")) {
+            System.out.println("JSESSIONID=" + cookie.getValue());
+            break;
             }
+            }
+            }*/
             //invalidate the session if exists
-            HttpSession session = request.getSession(false);
-            System.out.println("User=" + session.getAttribute("user"));
-            if (session != null) {
-                session.invalidate();
-            }
+            //HttpSession session = request.getSession(false);
+            //System.out.println("User=" + session.getAttribute("user"));
+            //if (session != null) {
+                request.getSession(false).invalidate();
+            //}
             request.getRequestDispatcher("jsp/login.jsp").forward(request, response);
         } catch (ServletException | IOException servletException) {
             System.out.println("Error occure LogOut servlet" + "\t" + servletException);
